@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C1F451801F673DC00033DAEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F4517F1F673DC00033DAEF /* AppDelegate.swift */; };
-		C1F451821F673DC00033DAEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451811F673DC00033DAEF /* ViewController.swift */; };
-		C1F451851F673DC00033DAEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1F451831F673DC00033DAEF /* Main.storyboard */; };
 		C1F451871F673DC00033DAEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1F451861F673DC00033DAEF /* Assets.xcassets */; };
 		C1F4518A1F673DC00033DAEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1F451881F673DC00033DAEF /* LaunchScreen.storyboard */; };
 		C1F451951F673DC00033DAEF /* lilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451941F673DC00033DAEF /* lilyTests.swift */; };
@@ -21,6 +19,15 @@
 		C1F451B91F67405E0033DAEF /* contest_guru_40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F451B21F67405E0033DAEF /* contest_guru_40@2x.png */; };
 		C1F451BA1F67405E0033DAEF /* contest_guru_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F451B31F67405E0033DAEF /* contest_guru_60@2x.png */; };
 		C1F451BB1F67405E0033DAEF /* contest_guru_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F451B41F67405E0033DAEF /* contest_guru_60@3x.png */; };
+		C1F451BE1F69A3170033DAEF /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451BD1F69A3170033DAEF /* AppCoordinator.swift */; };
+		C1F451C11F69AFF40033DAEF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451C01F69AFF40033DAEF /* MainViewController.swift */; };
+		C1F451C31F69B0A00033DAEF /* ContestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451C21F69B0A00033DAEF /* ContestViewController.swift */; };
+		C1F451C51F69B0B10033DAEF /* CreateContestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451C41F69B0B10033DAEF /* CreateContestViewController.swift */; };
+		C1F451C71F69B0D80033DAEF /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451C61F69B0D80033DAEF /* ResultsViewController.swift */; };
+		C1F451C91F69B0EA0033DAEF /* CreateContestCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451C81F69B0EA0033DAEF /* CreateContestCoordinator.swift */; };
+		C1F451CB1F69B0F90033DAEF /* ViewContestCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451CA1F69B0F90033DAEF /* ViewContestCoordinator.swift */; };
+		C1F451CD1F69D20B0033DAEF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451CC1F69D20B0033DAEF /* Coordinator.swift */; };
+		C1F451CF1F69D4C70033DAEF /* Contest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451CE1F69D4C70033DAEF /* Contest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +50,6 @@
 /* Begin PBXFileReference section */
 		C1F4517C1F673DC00033DAEF /* lily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F4517F1F673DC00033DAEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C1F451811F673DC00033DAEF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C1F451841F673DC00033DAEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C1F451861F673DC00033DAEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1F451891F673DC00033DAEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1F4518B1F673DC00033DAEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +66,15 @@
 		C1F451B21F67405E0033DAEF /* contest_guru_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contest_guru_40@2x.png"; path = "Icons/contest_guru_40@2x.png"; sourceTree = "<group>"; };
 		C1F451B31F67405E0033DAEF /* contest_guru_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contest_guru_60@2x.png"; path = "Icons/contest_guru_60@2x.png"; sourceTree = "<group>"; };
 		C1F451B41F67405E0033DAEF /* contest_guru_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contest_guru_60@3x.png"; path = "Icons/contest_guru_60@3x.png"; sourceTree = "<group>"; };
+		C1F451BD1F69A3170033DAEF /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCoordinator.swift; path = Coordinators/AppCoordinator.swift; sourceTree = "<group>"; };
+		C1F451C01F69AFF40033DAEF /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Controllers/MainViewController.swift; sourceTree = "<group>"; };
+		C1F451C21F69B0A00033DAEF /* ContestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContestViewController.swift; path = Controllers/ContestViewController.swift; sourceTree = "<group>"; };
+		C1F451C41F69B0B10033DAEF /* CreateContestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateContestViewController.swift; path = Controllers/CreateContestViewController.swift; sourceTree = "<group>"; };
+		C1F451C61F69B0D80033DAEF /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsViewController.swift; path = Controllers/ResultsViewController.swift; sourceTree = "<group>"; };
+		C1F451C81F69B0EA0033DAEF /* CreateContestCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateContestCoordinator.swift; path = Coordinators/CreateContestCoordinator.swift; sourceTree = "<group>"; };
+		C1F451CA1F69B0F90033DAEF /* ViewContestCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewContestCoordinator.swift; path = Coordinators/ViewContestCoordinator.swift; sourceTree = "<group>"; };
+		C1F451CC1F69D20B0033DAEF /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Coordinator.swift; path = Coordinators/Coordinator.swift; sourceTree = "<group>"; };
+		C1F451CE1F69D4C70033DAEF /* Contest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contest.swift; path = Models/Contest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +126,10 @@
 			isa = PBXGroup;
 			children = (
 				C1F451AD1F673F550033DAEF /* icons */,
+				C1F451BC1F69A2F10033DAEF /* coordinators */,
+				C1F451BF1F69AFB70033DAEF /* controllers */,
+				C1F451D01F69D4CE0033DAEF /* models */,
 				C1F4517F1F673DC00033DAEF /* AppDelegate.swift */,
-				C1F451811F673DC00033DAEF /* ViewController.swift */,
-				C1F451831F673DC00033DAEF /* Main.storyboard */,
 				C1F451861F673DC00033DAEF /* Assets.xcassets */,
 				C1F451881F673DC00033DAEF /* LaunchScreen.storyboard */,
 				C1F4518B1F673DC00033DAEF /* Info.plist */,
@@ -152,6 +167,36 @@
 				C1F451B41F67405E0033DAEF /* contest_guru_60@3x.png */,
 			);
 			name = icons;
+			sourceTree = "<group>";
+		};
+		C1F451BC1F69A2F10033DAEF /* coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				C1F451CC1F69D20B0033DAEF /* Coordinator.swift */,
+				C1F451BD1F69A3170033DAEF /* AppCoordinator.swift */,
+				C1F451C81F69B0EA0033DAEF /* CreateContestCoordinator.swift */,
+				C1F451CA1F69B0F90033DAEF /* ViewContestCoordinator.swift */,
+			);
+			name = coordinators;
+			sourceTree = "<group>";
+		};
+		C1F451BF1F69AFB70033DAEF /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C1F451C01F69AFF40033DAEF /* MainViewController.swift */,
+				C1F451C41F69B0B10033DAEF /* CreateContestViewController.swift */,
+				C1F451C21F69B0A00033DAEF /* ContestViewController.swift */,
+				C1F451C61F69B0D80033DAEF /* ResultsViewController.swift */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		C1F451D01F69D4CE0033DAEF /* models */ = {
+			isa = PBXGroup;
+			children = (
+				C1F451CE1F69D4C70033DAEF /* Contest.swift */,
+			);
+			name = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,7 +315,6 @@
 				C1F4518A1F673DC00033DAEF /* LaunchScreen.storyboard in Resources */,
 				C1F451871F673DC00033DAEF /* Assets.xcassets in Resources */,
 				C1F451B51F67405E0033DAEF /* contest_guru_20@2x.png in Resources */,
-				C1F451851F673DC00033DAEF /* Main.storyboard in Resources */,
 				C1F451BB1F67405E0033DAEF /* contest_guru_60@3x.png in Resources */,
 				C1F451BA1F67405E0033DAEF /* contest_guru_60@2x.png in Resources */,
 				C1F451B71F67405E0033DAEF /* contest_guru_29@2x.png in Resources */,
@@ -298,8 +342,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1F451821F673DC00033DAEF /* ViewController.swift in Sources */,
+				C1F451CF1F69D4C70033DAEF /* Contest.swift in Sources */,
+				C1F451BE1F69A3170033DAEF /* AppCoordinator.swift in Sources */,
+				C1F451C51F69B0B10033DAEF /* CreateContestViewController.swift in Sources */,
+				C1F451C31F69B0A00033DAEF /* ContestViewController.swift in Sources */,
+				C1F451C91F69B0EA0033DAEF /* CreateContestCoordinator.swift in Sources */,
 				C1F451801F673DC00033DAEF /* AppDelegate.swift in Sources */,
+				C1F451C11F69AFF40033DAEF /* MainViewController.swift in Sources */,
+				C1F451CB1F69B0F90033DAEF /* ViewContestCoordinator.swift in Sources */,
+				C1F451C71F69B0D80033DAEF /* ResultsViewController.swift in Sources */,
+				C1F451CD1F69D20B0033DAEF /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,14 +387,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C1F451831F673DC00033DAEF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C1F451841F673DC00033DAEF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C1F451881F673DC00033DAEF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
