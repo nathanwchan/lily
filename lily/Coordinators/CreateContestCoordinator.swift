@@ -21,7 +21,6 @@ class CreateContestCoordinator: NavigationCoordinator {
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.childCoordinators = []
     }
     
     func start() {

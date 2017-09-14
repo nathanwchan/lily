@@ -14,7 +14,6 @@ class AppCoordinator: NSObject, NavigationCoordinator {
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.childCoordinators = []
     }
     
     func start() {

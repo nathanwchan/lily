@@ -15,7 +15,6 @@ class ViewContestCoordinator: NavigationCoordinator {
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.childCoordinators = []
     }
     
     convenience init(navigationController: UINavigationController, contest: Contest) {
