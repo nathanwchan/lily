@@ -13,20 +13,20 @@ protocol MainViewControllerDelegate: class {
     func mainViewController(_ mainViewController: MainViewController, didSelectContest contest: Contest)
 }
 
-class MainViewController: UIViewController {
+class MainViewController: BaseViewModelViewController<MainViewModel> {
     
-    weak var delegate: MainViewControllerDelegate?
-    
-    var childCoordinators: [Coordinator]?
+    let getMediaButton = UIButton(frame: .zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.initViewModel()
         
         view.backgroundColor = .white
         
         self.title = "contest.guru"
         
-        let loginBarButtonItem = UIBarButtonItem(title: "Login", style: .plain, target: self, action: #selector(self.loginButtonTapped))
+        let loginBarButtonItem = UIBarButtonItem(title: "Login", style: .plain, target: self, action: #selector(self.loginButtonClicked))
         self.navigationItem.rightBarButtonItem = loginBarButtonItem
         
         let stackView = UIStackView(frame: .zero)
@@ -62,23 +62,45 @@ class MainViewController: UIViewController {
         viewContestButton.addTarget(self, action: #selector(self.viewContestButtonClicked(sender:)), for: .touchUpInside)
         
         stackView.addArrangedSubview(viewContestButton)
+        
+        getMediaButton.center = view.center
+        getMediaButton.setTitle("Get Media", for: .normal)
+        getMediaButton.backgroundColor = .blue
+        getMediaButton.addTarget(self, action: #selector(self.getMediaButtonClicked(sender:)), for: .touchUpInside)
+        
+        stackView.addArrangedSubview(getMediaButton)
     }
     
-    func loginButtonTapped(sender: UIBarButtonItem) {
-        print("loginButtonTapped")
+    private func initViewModel() {
+        viewModel.didGetMediaForUser = { [weak self] in
+            self?.viewModelDidGetMediaForUser()
+        }
+    }
+    
+    private func viewModelDidGetMediaForUser() {
+        if let count = viewModel.media?.count {
+            getMediaButton.setTitle("Media count: \(count)", for: .normal)
+        }
+    }
+    
+    func loginButtonClicked(sender: UIBarButtonItem) {
+        viewModel.didClickLogin()
     }
     
     func createContestButtonClicked(sender: Any?) {
-        print("createContestButtonClicked")
-        self.delegate?.mainViewControllerDidClickCreateContest(self)
+        viewModel.didClickCreateContest()
     }
     
     func viewContestButtonClicked(sender: UIButton) {
         
         // grab contest from dataSource/viewModel
-        let contest = Contest("viewContest")
+        // TODO: just pass in index and have ViewModel grab Contest
+        let contest = Contest(name: "viewContest", media: testMedia)
         
-        print("viewContestButtonClicked")
-        self.delegate?.mainViewController(self, didSelectContest: contest)
+        viewModel.didSelectContest(contest)
+    }
+    
+    func getMediaButtonClicked(sender: Any?) {
+        viewModel.didClickGetMedia()
     }
 }

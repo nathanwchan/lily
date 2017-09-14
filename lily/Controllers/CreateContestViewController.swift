@@ -62,6 +62,6 @@ class CreateContestViewController: UIViewController {
 
     func createContestButtonClicked(sender: Any?) {
         print("createContestButtonClicked")
-        self.delegate?.createContestViewController(self, didCreateContest: Contest("createContest"))
+        self.delegate?.createContestViewController(self, didCreateContest: Contest(name: "createContest", media: testMedia))
     }
 }

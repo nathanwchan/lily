@@ -10,8 +10,11 @@ import Foundation
 
 struct Contest {
     var name: String
+    var media: Media
+    var isComplete: Bool = false
     
-    init(_ name: String) {
+    init(name: String, media: Media) {
         self.name = name
+        self.media = media
     }
 }

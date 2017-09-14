@@ -28,6 +28,14 @@
 		C1F451CB1F69B0F90033DAEF /* ViewContestCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451CA1F69B0F90033DAEF /* ViewContestCoordinator.swift */; };
 		C1F451CD1F69D20B0033DAEF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451CC1F69D20B0033DAEF /* Coordinator.swift */; };
 		C1F451CF1F69D4C70033DAEF /* Contest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451CE1F69D4C70033DAEF /* Contest.swift */; };
+		C1F451D21F6A49A70033DAEF /* BaseViewModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451D11F6A49A70033DAEF /* BaseViewModelViewController.swift */; };
+		C1F451D51F6AE29F0033DAEF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451D41F6AE29F0033DAEF /* MainViewModel.swift */; };
+		C1F451D81F6AE4B40033DAEF /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451D71F6AE4B40033DAEF /* DataProvider.swift */; };
+		C1F451DA1F6AE56A0033DAEF /* NodeDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451D91F6AE56A0033DAEF /* NodeDataProvider.swift */; };
+		C1F451DE1F6AF7220033DAEF /* TestInstagramDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451DD1F6AF7220033DAEF /* TestInstagramDataProvider.swift */; };
+		C1F451E01F6B1BAB0033DAEF /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451DF1F6B1BAB0033DAEF /* Media.swift */; };
+		C1F451E21F6B1E230033DAEF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F451E11F6B1E230033DAEF /* Alamofire.framework */; };
+		C1F451E31F6B1E230033DAEF /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C1F451E11F6B1E230033DAEF /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +54,20 @@
 			remoteInfo = lily;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C1F451E41F6B1E230033DAEF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C1F451E31F6B1E230033DAEF /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C1F4517C1F673DC00033DAEF /* lily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lily.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +97,13 @@
 		C1F451CA1F69B0F90033DAEF /* ViewContestCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewContestCoordinator.swift; path = Coordinators/ViewContestCoordinator.swift; sourceTree = "<group>"; };
 		C1F451CC1F69D20B0033DAEF /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Coordinator.swift; path = Coordinators/Coordinator.swift; sourceTree = "<group>"; };
 		C1F451CE1F69D4C70033DAEF /* Contest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contest.swift; path = Models/Contest.swift; sourceTree = "<group>"; };
+		C1F451D11F6A49A70033DAEF /* BaseViewModelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewModelViewController.swift; path = Controllers/BaseViewModelViewController.swift; sourceTree = "<group>"; };
+		C1F451D41F6AE29F0033DAEF /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewModel.swift; path = ViewModels/MainViewModel.swift; sourceTree = "<group>"; };
+		C1F451D71F6AE4B40033DAEF /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataProvider.swift; path = Services/DataProvider.swift; sourceTree = "<group>"; };
+		C1F451D91F6AE56A0033DAEF /* NodeDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeDataProvider.swift; path = Services/NodeDataProvider.swift; sourceTree = "<group>"; };
+		C1F451DD1F6AF7220033DAEF /* TestInstagramDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestInstagramDataProvider.swift; path = Services/TestInstagramDataProvider.swift; sourceTree = "<group>"; };
+		C1F451DF1F6B1BAB0033DAEF /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Media.swift; path = Models/Media.swift; sourceTree = "<group>"; };
+		C1F451E11F6B1E230033DAEF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1F451E21F6B1E230033DAEF /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				C1F4517E1F673DC00033DAEF /* lily */,
+				C1F451E11F6B1E230033DAEF /* Alamofire.framework */,
 				C1F451931F673DC00033DAEF /* lilyTests */,
 				C1F4519E1F673DC00033DAEF /* lilyUITests */,
 				C1F4517D1F673DC00033DAEF /* Products */,
@@ -128,7 +159,9 @@
 				C1F451AD1F673F550033DAEF /* icons */,
 				C1F451BC1F69A2F10033DAEF /* coordinators */,
 				C1F451BF1F69AFB70033DAEF /* controllers */,
+				C1F451D31F6A49F10033DAEF /* viewmodels */,
 				C1F451D01F69D4CE0033DAEF /* models */,
+				C1F451D61F6AE49B0033DAEF /* services */,
 				C1F4517F1F673DC00033DAEF /* AppDelegate.swift */,
 				C1F451861F673DC00033DAEF /* Assets.xcassets */,
 				C1F451881F673DC00033DAEF /* LaunchScreen.storyboard */,
@@ -183,6 +216,7 @@
 		C1F451BF1F69AFB70033DAEF /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C1F451D11F6A49A70033DAEF /* BaseViewModelViewController.swift */,
 				C1F451C01F69AFF40033DAEF /* MainViewController.swift */,
 				C1F451C41F69B0B10033DAEF /* CreateContestViewController.swift */,
 				C1F451C21F69B0A00033DAEF /* ContestViewController.swift */,
@@ -195,8 +229,27 @@
 			isa = PBXGroup;
 			children = (
 				C1F451CE1F69D4C70033DAEF /* Contest.swift */,
+				C1F451DF1F6B1BAB0033DAEF /* Media.swift */,
 			);
 			name = models;
+			sourceTree = "<group>";
+		};
+		C1F451D31F6A49F10033DAEF /* viewmodels */ = {
+			isa = PBXGroup;
+			children = (
+				C1F451D41F6AE29F0033DAEF /* MainViewModel.swift */,
+			);
+			name = viewmodels;
+			sourceTree = "<group>";
+		};
+		C1F451D61F6AE49B0033DAEF /* services */ = {
+			isa = PBXGroup;
+			children = (
+				C1F451D71F6AE4B40033DAEF /* DataProvider.swift */,
+				C1F451D91F6AE56A0033DAEF /* NodeDataProvider.swift */,
+				C1F451DD1F6AF7220033DAEF /* TestInstagramDataProvider.swift */,
+			);
+			name = services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +262,7 @@
 				C1F451781F673DC00033DAEF /* Sources */,
 				C1F451791F673DC00033DAEF /* Frameworks */,
 				C1F4517A1F673DC00033DAEF /* Resources */,
+				C1F451E41F6B1E230033DAEF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -344,14 +398,20 @@
 			files = (
 				C1F451CF1F69D4C70033DAEF /* Contest.swift in Sources */,
 				C1F451BE1F69A3170033DAEF /* AppCoordinator.swift in Sources */,
+				C1F451DA1F6AE56A0033DAEF /* NodeDataProvider.swift in Sources */,
+				C1F451D21F6A49A70033DAEF /* BaseViewModelViewController.swift in Sources */,
 				C1F451C51F69B0B10033DAEF /* CreateContestViewController.swift in Sources */,
 				C1F451C31F69B0A00033DAEF /* ContestViewController.swift in Sources */,
+				C1F451E01F6B1BAB0033DAEF /* Media.swift in Sources */,
+				C1F451DE1F6AF7220033DAEF /* TestInstagramDataProvider.swift in Sources */,
 				C1F451C91F69B0EA0033DAEF /* CreateContestCoordinator.swift in Sources */,
 				C1F451801F673DC00033DAEF /* AppDelegate.swift in Sources */,
 				C1F451C11F69AFF40033DAEF /* MainViewController.swift in Sources */,
 				C1F451CB1F69B0F90033DAEF /* ViewContestCoordinator.swift in Sources */,
 				C1F451C71F69B0D80033DAEF /* ResultsViewController.swift in Sources */,
 				C1F451CD1F69D20B0033DAEF /* Coordinator.swift in Sources */,
+				C1F451D51F6AE29F0033DAEF /* MainViewModel.swift in Sources */,
+				C1F451D81F6AE4B40033DAEF /* DataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +556,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3S86DJ63TR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = lily/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathanchan.lily;
@@ -509,6 +573,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3S86DJ63TR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = lily/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathanchan.lily;

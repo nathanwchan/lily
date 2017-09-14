@@ -23,22 +23,22 @@ class AppCoordinator: NSObject, NavigationCoordinator {
     }
 
     private func showMainViewController() {
-        let mainViewController = MainViewController()
-        mainViewController.delegate = self
-        mainViewController.childCoordinators = childCoordinators
+        let mainViewModel = MainViewModel()
+        let mainViewController = MainViewController(viewModel: mainViewModel)
+        mainViewModel.delegate = self
         self.navigationController.pushViewController(mainViewController, animated: false)
     }
 }
 
-extension AppCoordinator: MainViewControllerDelegate {
-    func mainViewControllerDidClickCreateContest(_ mainViewController: MainViewController) {
+extension AppCoordinator: MainViewModelDelegate {
+    func mainViewDidClickCreateContest(_ mainViewModel: MainViewModel) {
         let createContestCoordinator = CreateContestCoordinator(navigationController: navigationController)
         createContestCoordinator.delegate = self
         createContestCoordinator.start()
         self.addChildCoordinator(createContestCoordinator)
     }
     
-    func mainViewController(_ mainViewController: MainViewController, didSelectContest contest: Contest) {
+    func mainView(_ mainViewModel: MainViewModel, didSelectContest contest: Contest) {
         let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest)
         viewContestCoordinator.start()
         self.addChildCoordinator(viewContestCoordinator)
