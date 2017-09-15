@@ -8,13 +8,32 @@
 
 import Foundation
 
+enum State: Int {
+    case Inactive
+    case InProgress
+    case Complete
+}
+
 struct Contest {
     var name: String
     var media: Media
-    var isComplete: Bool = false
+    var state: State {
+        didSet {
+            // state machine - transitions
+            switch oldValue {
+            case .Inactive:
+                if state == .Complete {
+                    state = oldValue
+                }
+            default:
+                break
+            }
+        }
+    }
     
-    init(name: String, media: Media) {
+    init(name: String, media: Media, state: State = .Inactive) {
         self.name = name
         self.media = media
+        self.state = state
     }
 }

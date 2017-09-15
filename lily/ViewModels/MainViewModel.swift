@@ -9,7 +9,6 @@
 import Foundation
 
 protocol MainViewModelDelegate: class {
-    func mainViewDidClickCreateContest(_ mainViewModel: MainViewModel)
     func mainView(_ mainViewModel: MainViewModel, didSelectContest contest: Contest)
     func mainView(_ mainViewModel: MainViewModel, didSelectMedia media: Media)
 }
@@ -49,25 +48,17 @@ class MainViewModel {
         print("didClickLogin")
     }
     
-    func didClickCreateContest() {
-        self.delegate?.mainViewDidClickCreateContest(self)
-    }
-    
-    func didSelectMedia(at indexPath: IndexPath) {
-        if let media = media {
-            self.delegate?.mainView(self, didSelectMedia: media[indexPath.row])
+    func didSelectContest(at indexPath: IndexPath) {
+        if let contests = contests {
+            self.delegate?.mainView(self, didSelectContest: contests[indexPath.row])
         }
-    }
-    
-    func didSelectContest(_ contest: Contest) {
-        self.delegate?.mainView(self, didSelectContest: contest)
     }
     
     func getMedia() {
         dataProvider.getMediaForUser(completion: self.didGetMediaForUser)
     }
     
-    func getContestsForUser() {
+    func getContests() {
         dataProvider.getContestsForUser(completion: self.didGetContestsForUser)
     }
 }

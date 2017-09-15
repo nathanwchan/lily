@@ -31,13 +31,6 @@ class AppCoordinator: NSObject, NavigationCoordinator {
 }
 
 extension AppCoordinator: MainViewModelDelegate {
-    func mainViewDidClickCreateContest(_ mainViewModel: MainViewModel) {
-        let createContestCoordinator = CreateContestCoordinator(navigationController: navigationController)
-        createContestCoordinator.delegate = self
-        createContestCoordinator.start()
-        self.addChildCoordinator(createContestCoordinator)
-    }
-    
     func mainView(_ mainViewModel: MainViewModel, didSelectContest contest: Contest) {
         let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest)
         viewContestCoordinator.start()
@@ -49,23 +42,6 @@ extension AppCoordinator: MainViewModelDelegate {
         let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest)
         viewContestCoordinator.start()
         self.addChildCoordinator(viewContestCoordinator)
-    }
-}
-
-extension AppCoordinator: CreateContestCoordinatorDelegate {
-    func createContestCoordinatorDelegateDidCancel(_ createContestCoordinator: CreateContestCoordinator) {
-        print("createContestCoordinatorDelegateDidCancel")
-        createContestCoordinator.navigationController.popToRootViewController(animated: true)
-        self.removeChildCoordinator(createContestCoordinator)
-    }
-    
-    func createContestCoordinator(_ createContestCoordinator: CreateContestCoordinator, didCreateContest contest: Contest) {
-        
-        // do something with the Contest
-        
-        print("createContestCoordinator:didCreateContest \(contest.name)")
-        createContestCoordinator.navigationController.popToRootViewController(animated: true)
-        self.removeChildCoordinator(createContestCoordinator)
     }
 }
 

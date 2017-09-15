@@ -36,7 +36,7 @@
 		C1F451E01F6B1BAB0033DAEF /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451DF1F6B1BAB0033DAEF /* Media.swift */; };
 		C1F451E21F6B1E230033DAEF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F451E11F6B1E230033DAEF /* Alamofire.framework */; };
 		C1F451E31F6B1E230033DAEF /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C1F451E11F6B1E230033DAEF /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C1F451E91F6B3AD90033DAEF /* MediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451E81F6B3AD90033DAEF /* MediaCollectionViewCell.swift */; };
+		C1F451E91F6B3AD90033DAEF /* ContestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451E81F6B3AD90033DAEF /* ContestCollectionViewCell.swift */; };
 		C1F451EC1F6B426B0033DAEF /* UIImageView+fromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451EB1F6B426B0033DAEF /* UIImageView+fromUrl.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,7 +106,7 @@
 		C1F451DD1F6AF7220033DAEF /* TestInstagramDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestInstagramDataProvider.swift; path = Services/TestInstagramDataProvider.swift; sourceTree = "<group>"; };
 		C1F451DF1F6B1BAB0033DAEF /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Media.swift; path = Models/Media.swift; sourceTree = "<group>"; };
 		C1F451E11F6B1E230033DAEF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		C1F451E81F6B3AD90033DAEF /* MediaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaCollectionViewCell.swift; path = Views/MediaCollectionViewCell.swift; sourceTree = "<group>"; };
+		C1F451E81F6B3AD90033DAEF /* ContestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContestCollectionViewCell.swift; path = Views/ContestCollectionViewCell.swift; sourceTree = "<group>"; };
 		C1F451EB1F6B426B0033DAEF /* UIImageView+fromUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+fromUrl.swift"; path = "Extensions/UIImageView+fromUrl.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -261,7 +261,7 @@
 		C1F451E51F6B3A900033DAEF /* views */ = {
 			isa = PBXGroup;
 			children = (
-				C1F451E81F6B3AD90033DAEF /* MediaCollectionViewCell.swift */,
+				C1F451E81F6B3AD90033DAEF /* ContestCollectionViewCell.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -425,7 +425,7 @@
 				C1F451C51F69B0B10033DAEF /* CreateContestViewController.swift in Sources */,
 				C1F451C31F69B0A00033DAEF /* ContestViewController.swift in Sources */,
 				C1F451E01F6B1BAB0033DAEF /* Media.swift in Sources */,
-				C1F451E91F6B3AD90033DAEF /* MediaCollectionViewCell.swift in Sources */,
+				C1F451E91F6B3AD90033DAEF /* ContestCollectionViewCell.swift in Sources */,
 				C1F451DE1F6AF7220033DAEF /* TestInstagramDataProvider.swift in Sources */,
 				C1F451C91F69B0EA0033DAEF /* CreateContestCoordinator.swift in Sources */,
 				C1F451801F673DC00033DAEF /* AppDelegate.swift in Sources */,

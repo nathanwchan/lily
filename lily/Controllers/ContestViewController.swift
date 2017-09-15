@@ -9,6 +9,7 @@
 import UIKit
 
 protocol ContestViewControllerDelegate: class {
+    func contestViewController(_ contestViewController: ContestViewController, didClickCreateContest contest: Contest)
     func contestViewController(_ contestViewController: ContestViewController, didClickSeeResults contest: Contest)
 }
 
@@ -78,28 +79,46 @@ class ContestViewController: UIViewController {
             attributedString.append(NSMutableAttributedString(string: " \(caption)", attributes: attrs))
         }
         
+        
+        let actionButton = UIButton(frame: .zero)
+        actionButton.center = view.center
+        switch contest.state {
+        case .Inactive:
+            actionButton.setTitle("Create Contest", for: .normal)
+            actionButton.setTitleColor(.white, for: .normal)
+            actionButton.backgroundColor = UIColor(red: 0.22, green: 0.59, blue: 0.94, alpha: 1.0)
+        case .InProgress:
+            actionButton.setTitle("Contest currently in progress!", for: .normal)
+            actionButton.setTitleColor(.black, for: .normal)
+            actionButton.backgroundColor = .white
+        case .Complete:
+            actionButton.setTitle("See Results", for: .normal)
+            actionButton.setTitleColor(.white, for: .normal)
+            actionButton.backgroundColor = UIColor(red: 0.22, green: 0.59, blue: 0.94, alpha: 1.0)
+        }
+        actionButton.addTarget(self, action: #selector(self.actionButtonClicked(sender:)), for: .touchUpInside)
+        
+        detailStackView.addArrangedSubview(actionButton)
+        
         captionLabel.attributedText = attributedString
         captionLabel.textColor = .black
         captionLabel.textAlignment = .left
         captionLabel.numberOfLines = 0
         
         detailStackView.addArrangedSubview(captionLabel)
-        
-        let seeResultsButton = UIButton(frame: .zero)
-        seeResultsButton.center = view.center
-        seeResultsButton.setTitle("See Results", for: .normal)
-        seeResultsButton.setTitleColor(.black, for: .normal)
-        seeResultsButton.backgroundColor = .green
-        seeResultsButton.addTarget(self, action: #selector(self.seeResultsButtonClicked(sender:)), for: .touchUpInside)
-        
-        detailStackView.addArrangedSubview(seeResultsButton)
     }
     
-    func seeResultsButtonClicked(sender: Any?) {
-        print("seeResultsButtonClicked")
+    func actionButtonClicked(sender: Any?) {
         guard let contest = contest else {
             return
         }
-        self.delegate?.contestViewController(self, didClickSeeResults: contest)
+        switch contest.state {
+        case .Inactive:
+            self.delegate?.contestViewController(self, didClickCreateContest: contest)
+        case .InProgress:
+            break
+        case .Complete:
+            self.delegate?.contestViewController(self, didClickSeeResults: contest)
+        }
     }
 }

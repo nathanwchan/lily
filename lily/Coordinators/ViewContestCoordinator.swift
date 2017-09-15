@@ -41,7 +41,31 @@ class ViewContestCoordinator: NavigationCoordinator {
 }
 
 extension ViewContestCoordinator: ContestViewControllerDelegate {
+    func contestViewController(_ contestViewController: ContestViewController, didClickCreateContest contest: Contest) {
+        let createContestCoordinator = CreateContestCoordinator(navigationController: navigationController)
+        createContestCoordinator.delegate = self
+        createContestCoordinator.start()
+        self.addChildCoordinator(createContestCoordinator)
+    }
+    
     func contestViewController(_ contestViewController: ContestViewController, didClickSeeResults contest: Contest) {
         self.showResultsViewController()
+    }
+}
+
+extension ViewContestCoordinator: CreateContestCoordinatorDelegate {
+    func createContestCoordinatorDelegateDidCancel(_ createContestCoordinator: CreateContestCoordinator) {
+        print("createContestCoordinatorDelegateDidCancel")
+        createContestCoordinator.navigationController.popToRootViewController(animated: true)
+        self.removeChildCoordinator(createContestCoordinator)
+    }
+    
+    func createContestCoordinator(_ createContestCoordinator: CreateContestCoordinator, didCreateContest contest: Contest) {
+        
+        // do something with the Contest
+        
+        print("createContestCoordinator:didCreateContest \(contest.name)")
+        createContestCoordinator.navigationController.popToRootViewController(animated: true)
+        self.removeChildCoordinator(createContestCoordinator)
     }
 }

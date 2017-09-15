@@ -15,8 +15,10 @@ protocol MainViewControllerDelegate: class {
 
 class MainViewController: BaseViewModelViewController<MainViewModel>, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    private var mediaCollectionView: UICollectionView!
-    private let mediaCellReuseIdentifier = "mediaCell"
+    var loggedIn: Bool = true
+    private var contestsCollectionView: UICollectionView!
+    private let contestCellReuseIdentifier = "contestCell"
+    private let collectionViewCellButtonHeight: CGFloat = 25
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,44 +30,48 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
         
         self.title = "contest.guru"
         
-        let createContestButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(self.createContestButtonClicked))
-        self.navigationItem.leftBarButtonItem = createContestButtonItem
-        
         let loginBarButtonItem = UIBarButtonItem(title: "Login", style: .plain, target: self, action: #selector(self.loginButtonClicked))
         self.navigationItem.rightBarButtonItem = loginBarButtonItem
         
+        contestsCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: getContestsCollectionViewFlowLayout())
+        contestsCollectionView.register(ContestCollectionViewCell.self, forCellWithReuseIdentifier: contestCellReuseIdentifier)
+        contestsCollectionView.delegate = self
+        contestsCollectionView.dataSource = self
+        contestsCollectionView.backgroundColor = .white
+        contestsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(contestsCollectionView)
+        
+        contestsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        contestsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        contestsCollectionView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        contestsCollectionView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
+        
+        viewModel.getContests()
+    }
+    
+    private func getContestsCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
         let flowLayout = UICollectionViewFlowLayout()
         let width = (view.bounds.width - 2) / 3
-        flowLayout.itemSize = CGSize(width: width, height: width)
+        var height = width
+        if loggedIn {
+            height += collectionViewCellButtonHeight
+        }
+        flowLayout.itemSize = CGSize(width: width, height: height)
         flowLayout.minimumInteritemSpacing = 1
         flowLayout.minimumLineSpacing = 1
-        
-        mediaCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
-        mediaCollectionView.register(MediaCollectionViewCell.self, forCellWithReuseIdentifier: mediaCellReuseIdentifier)
-        mediaCollectionView.delegate = self
-        mediaCollectionView.dataSource = self
-        mediaCollectionView.backgroundColor = .white
-        mediaCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(mediaCollectionView)
-        
-        mediaCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        mediaCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        mediaCollectionView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
-        mediaCollectionView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
-        
-        viewModel.getMedia()
+        return flowLayout
     }
     
     private func initViewModel() {
-        viewModel.didGetMediaForUser = { [weak self] in
-            self?.viewModelDidGetMediaForUser()
+        viewModel.didGetContestsForUser = { [weak self] in
+            self?.viewModelDidGetContestsForUser()
         }
     }
     
-    private func viewModelDidGetMediaForUser() {
+    private func viewModelDidGetContestsForUser() {
         DispatchQueue.main.async {
-            self.mediaCollectionView.reloadData()
+            self.contestsCollectionView.reloadData()
         }
     }
     
@@ -73,26 +79,22 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
         viewModel.didClickLogin()
     }
     
-    func createContestButtonClicked(sender: Any?) {
-        viewModel.didClickCreateContest()
-    }
-    
     //MARK: UICollectionView delegate methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.media?.count ?? 0
+        return viewModel.contests?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let media = viewModel.media else {
-            fatalError("no media loaded")
+        guard let contests = viewModel.contests else {
+            fatalError("no contests loaded")
         }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mediaCellReuseIdentifier, for: indexPath) as! MediaCollectionViewCell
-        cell.configureWith(media[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: contestCellReuseIdentifier, for: indexPath) as! ContestCollectionViewCell
+        cell.configureWith(contests[indexPath.row], showLabel: loggedIn, buttonHeight: collectionViewCellButtonHeight)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelectMedia(at: indexPath)
+        viewModel.didSelectContest(at: indexPath)
     }
 }
