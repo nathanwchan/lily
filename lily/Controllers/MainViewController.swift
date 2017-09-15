@@ -13,9 +13,10 @@ protocol MainViewControllerDelegate: class {
     func mainViewController(_ mainViewController: MainViewController, didSelectContest contest: Contest)
 }
 
-class MainViewController: BaseViewModelViewController<MainViewModel> {
+class MainViewController: BaseViewModelViewController<MainViewModel>, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    let getMediaButton = UIButton(frame: .zero)
+    private var mediaCollectionView: UICollectionView!
+    private let mediaCellReuseIdentifier = "mediaCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,52 +24,37 @@ class MainViewController: BaseViewModelViewController<MainViewModel> {
         self.initViewModel()
         
         view.backgroundColor = .white
+        self.automaticallyAdjustsScrollViewInsets = false
         
         self.title = "contest.guru"
+        
+        let createContestButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(self.createContestButtonClicked))
+        self.navigationItem.leftBarButtonItem = createContestButtonItem
         
         let loginBarButtonItem = UIBarButtonItem(title: "Login", style: .plain, target: self, action: #selector(self.loginButtonClicked))
         self.navigationItem.rightBarButtonItem = loginBarButtonItem
         
-        let stackView = UIStackView(frame: .zero)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.alignment = .fill
-        stackView.isLayoutMarginsRelativeArrangement = true
+        let flowLayout = UICollectionViewFlowLayout()
+        let width = (view.bounds.width - 2) / 3
+        flowLayout.itemSize = CGSize(width: width, height: width)
+        flowLayout.minimumInteritemSpacing = 1
+        flowLayout.minimumLineSpacing = 1
         
-        let spacing: CGFloat = 30
+        mediaCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
+        mediaCollectionView.register(MediaCollectionViewCell.self, forCellWithReuseIdentifier: mediaCellReuseIdentifier)
+        mediaCollectionView.delegate = self
+        mediaCollectionView.dataSource = self
+        mediaCollectionView.backgroundColor = .white
+        mediaCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
-        stackView.spacing = spacing
+        view.addSubview(mediaCollectionView)
         
-        view.addSubview(stackView)
+        mediaCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        mediaCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        mediaCollectionView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        mediaCollectionView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
         
-        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: spacing).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -spacing).isActive = true
-        stackView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: spacing).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -spacing).isActive = true
-        
-        let createContestButton = UIButton(frame: .zero)
-        createContestButton.center = view.center
-        createContestButton.setTitle("Create Contest", for: .normal)
-        createContestButton.backgroundColor = .blue
-        createContestButton.addTarget(self, action: #selector(self.createContestButtonClicked(sender:)), for: .touchUpInside)
-        
-        stackView.addArrangedSubview(createContestButton)
-        
-        let viewContestButton = UIButton(frame: .zero)
-        viewContestButton.center = view.center
-        viewContestButton.setTitle("View Contest", for: .normal)
-        viewContestButton.backgroundColor = .blue
-        viewContestButton.addTarget(self, action: #selector(self.viewContestButtonClicked(sender:)), for: .touchUpInside)
-        
-        stackView.addArrangedSubview(viewContestButton)
-        
-        getMediaButton.center = view.center
-        getMediaButton.setTitle("Get Media", for: .normal)
-        getMediaButton.backgroundColor = .blue
-        getMediaButton.addTarget(self, action: #selector(self.getMediaButtonClicked(sender:)), for: .touchUpInside)
-        
-        stackView.addArrangedSubview(getMediaButton)
+        viewModel.getMedia()
     }
     
     private func initViewModel() {
@@ -78,8 +64,8 @@ class MainViewController: BaseViewModelViewController<MainViewModel> {
     }
     
     private func viewModelDidGetMediaForUser() {
-        if let count = viewModel.media?.count {
-            getMediaButton.setTitle("Media count: \(count)", for: .normal)
+        DispatchQueue.main.async {
+            self.mediaCollectionView.reloadData()
         }
     }
     
@@ -91,16 +77,22 @@ class MainViewController: BaseViewModelViewController<MainViewModel> {
         viewModel.didClickCreateContest()
     }
     
-    func viewContestButtonClicked(sender: UIButton) {
-        
-        // grab contest from dataSource/viewModel
-        // TODO: just pass in index and have ViewModel grab Contest
-        let contest = Contest(name: "viewContest", media: testMedia)
-        
-        viewModel.didSelectContest(contest)
+    //MARK: UICollectionView delegate methods
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.media?.count ?? 0
     }
     
-    func getMediaButtonClicked(sender: Any?) {
-        viewModel.didClickGetMedia()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let media = viewModel.media else {
+            fatalError("no media loaded")
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mediaCellReuseIdentifier, for: indexPath) as! MediaCollectionViewCell
+        cell.configureWith(media[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelectMedia(at: indexPath)
     }
 }

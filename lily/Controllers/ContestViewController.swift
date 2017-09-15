@@ -21,16 +21,21 @@ class ContestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         
-        self.title = "View contest"
+        guard let contest = contest else {
+            fatalError("No contest!")
+        }
+        
+        self.title = contest.name
         
         let stackView = UIStackView(frame: .zero)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fill
         stackView.alignment = .fill
         stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.clipsToBounds = true
         
         let spacing: CGFloat = 30
         stackView.spacing = spacing
@@ -41,6 +46,21 @@ class ContestViewController: UIViewController {
         stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -spacing).isActive = true
         stackView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: spacing).isActive = true
         stackView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -spacing).isActive = true
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: stackView.bounds.width, height: stackView.bounds.width))
+        imageView.contentMode = .scaleAspectFill
+        imageView.image(fromUrl: contest.media.imageUrl)
+        
+        stackView.addArrangedSubview(imageView)
+        
+        let captionLabel = UILabel(frame: .zero)
+        captionLabel.text = contest.media.caption
+        captionLabel.textColor = .black
+        captionLabel.textAlignment = .left
+        captionLabel.font = UIFont(name: "HelveticaNeue", size: 16)
+        captionLabel.numberOfLines = 3
+        
+        stackView.addArrangedSubview(captionLabel)
         
         let seeResultsButton = UIButton(frame: .zero)
         seeResultsButton.center = view.center

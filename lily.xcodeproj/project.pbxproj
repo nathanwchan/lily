@@ -36,6 +36,8 @@
 		C1F451E01F6B1BAB0033DAEF /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451DF1F6B1BAB0033DAEF /* Media.swift */; };
 		C1F451E21F6B1E230033DAEF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F451E11F6B1E230033DAEF /* Alamofire.framework */; };
 		C1F451E31F6B1E230033DAEF /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C1F451E11F6B1E230033DAEF /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C1F451E91F6B3AD90033DAEF /* MediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451E81F6B3AD90033DAEF /* MediaCollectionViewCell.swift */; };
+		C1F451EC1F6B426B0033DAEF /* UIImageView+fromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451EB1F6B426B0033DAEF /* UIImageView+fromUrl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		C1F451DD1F6AF7220033DAEF /* TestInstagramDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestInstagramDataProvider.swift; path = Services/TestInstagramDataProvider.swift; sourceTree = "<group>"; };
 		C1F451DF1F6B1BAB0033DAEF /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Media.swift; path = Models/Media.swift; sourceTree = "<group>"; };
 		C1F451E11F6B1E230033DAEF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		C1F451E81F6B3AD90033DAEF /* MediaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaCollectionViewCell.swift; path = Views/MediaCollectionViewCell.swift; sourceTree = "<group>"; };
+		C1F451EB1F6B426B0033DAEF /* UIImageView+fromUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+fromUrl.swift"; path = "Extensions/UIImageView+fromUrl.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,9 +161,11 @@
 			isa = PBXGroup;
 			children = (
 				C1F451AD1F673F550033DAEF /* icons */,
+				C1F451EA1F6B423F0033DAEF /* extensions */,
 				C1F451BC1F69A2F10033DAEF /* coordinators */,
 				C1F451BF1F69AFB70033DAEF /* controllers */,
 				C1F451D31F6A49F10033DAEF /* viewmodels */,
+				C1F451E51F6B3A900033DAEF /* views */,
 				C1F451D01F69D4CE0033DAEF /* models */,
 				C1F451D61F6AE49B0033DAEF /* services */,
 				C1F4517F1F673DC00033DAEF /* AppDelegate.swift */,
@@ -250,6 +256,22 @@
 				C1F451DD1F6AF7220033DAEF /* TestInstagramDataProvider.swift */,
 			);
 			name = services;
+			sourceTree = "<group>";
+		};
+		C1F451E51F6B3A900033DAEF /* views */ = {
+			isa = PBXGroup;
+			children = (
+				C1F451E81F6B3AD90033DAEF /* MediaCollectionViewCell.swift */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		C1F451EA1F6B423F0033DAEF /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C1F451EB1F6B426B0033DAEF /* UIImageView+fromUrl.swift */,
+			);
+			name = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,10 +425,12 @@
 				C1F451C51F69B0B10033DAEF /* CreateContestViewController.swift in Sources */,
 				C1F451C31F69B0A00033DAEF /* ContestViewController.swift in Sources */,
 				C1F451E01F6B1BAB0033DAEF /* Media.swift in Sources */,
+				C1F451E91F6B3AD90033DAEF /* MediaCollectionViewCell.swift in Sources */,
 				C1F451DE1F6AF7220033DAEF /* TestInstagramDataProvider.swift in Sources */,
 				C1F451C91F69B0EA0033DAEF /* CreateContestCoordinator.swift in Sources */,
 				C1F451801F673DC00033DAEF /* AppDelegate.swift in Sources */,
 				C1F451C11F69AFF40033DAEF /* MainViewController.swift in Sources */,
+				C1F451EC1F6B426B0033DAEF /* UIImageView+fromUrl.swift in Sources */,
 				C1F451CB1F69B0F90033DAEF /* ViewContestCoordinator.swift in Sources */,
 				C1F451C71F69B0D80033DAEF /* ResultsViewController.swift in Sources */,
 				C1F451CD1F69D20B0033DAEF /* Coordinator.swift in Sources */,

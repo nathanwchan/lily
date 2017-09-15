@@ -43,6 +43,13 @@ extension AppCoordinator: MainViewModelDelegate {
         viewContestCoordinator.start()
         self.addChildCoordinator(viewContestCoordinator)
     }
+    
+    func mainView(_ mainViewModel: MainViewModel, didSelectMedia media: Media){
+        let contest = Contest(name: "Contest Name", media: media)
+        let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest)
+        viewContestCoordinator.start()
+        self.addChildCoordinator(viewContestCoordinator)
+    }
 }
 
 extension AppCoordinator: CreateContestCoordinatorDelegate {
