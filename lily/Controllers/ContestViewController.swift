@@ -22,6 +22,8 @@ class ContestViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        view.clipsToBounds = true
+        self.automaticallyAdjustsScrollViewInsets = false
         
         guard let contest = contest else {
             fatalError("No contest!")
@@ -29,38 +31,59 @@ class ContestViewController: UIViewController {
         
         self.title = contest.name
         
-        let stackView = UIStackView(frame: .zero)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-        stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.clipsToBounds = true
+        let scrollView = UIScrollView(frame: .zero)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.keyboardDismissMode = .onDrag
+        scrollView.alwaysBounceVertical = true
         
-        let spacing: CGFloat = 30
-        stackView.spacing = spacing
+        view.addSubview(scrollView)
         
-        view.addSubview(stackView)
+        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
+
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.width))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image(fromUrl: contest.media.imageUrl, readjustFrameSize: true)
         
-        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: spacing).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -spacing).isActive = true
-        stackView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: spacing).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -spacing).isActive = true
+        imageView.setContentHuggingPriority(UILayoutPriorityDefaultHigh, for: .vertical)
         
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: stackView.bounds.width, height: stackView.bounds.width))
-        imageView.contentMode = .scaleAspectFill
-        imageView.image(fromUrl: contest.media.imageUrl)
+        scrollView.addSubview(imageView)
         
-        stackView.addArrangedSubview(imageView)
+        let spacing: CGFloat = 20
+        
+        let detailStackView = UIStackView(frame: .zero)
+        detailStackView.translatesAutoresizingMaskIntoConstraints = false
+        detailStackView.axis = .vertical
+        detailStackView.distribution = .fill
+        detailStackView.alignment = .fill
+        detailStackView.isLayoutMarginsRelativeArrangement = true
+        detailStackView.clipsToBounds = true
+        detailStackView.spacing = spacing
+        
+        scrollView.addSubview(detailStackView)
+        
+        detailStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: spacing).isActive = true
+        detailStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -spacing).isActive = true
+        detailStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: spacing).isActive = true
+        detailStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -spacing).isActive = true
         
         let captionLabel = UILabel(frame: .zero)
-        captionLabel.text = contest.media.caption
+        let attrs: [String: AnyObject] = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 14)!]
+        let attributedString = NSMutableAttributedString(string: contest.media.username, attributes: attrs)
+        
+        if let caption = contest.media.caption {
+            let attrs: [String: AnyObject] = [NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 14)!]
+            attributedString.append(NSMutableAttributedString(string: " \(caption)", attributes: attrs))
+        }
+        
+        captionLabel.attributedText = attributedString
         captionLabel.textColor = .black
         captionLabel.textAlignment = .left
-        captionLabel.font = UIFont(name: "HelveticaNeue", size: 16)
-        captionLabel.numberOfLines = 3
+        captionLabel.numberOfLines = 0
         
-        stackView.addArrangedSubview(captionLabel)
+        detailStackView.addArrangedSubview(captionLabel)
         
         let seeResultsButton = UIButton(frame: .zero)
         seeResultsButton.center = view.center
@@ -69,7 +92,7 @@ class ContestViewController: UIViewController {
         seeResultsButton.backgroundColor = .green
         seeResultsButton.addTarget(self, action: #selector(self.seeResultsButtonClicked(sender:)), for: .touchUpInside)
         
-        stackView.addArrangedSubview(seeResultsButton)
+        detailStackView.addArrangedSubview(seeResultsButton)
     }
     
     func seeResultsButtonClicked(sender: Any?) {
