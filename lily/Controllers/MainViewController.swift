@@ -51,7 +51,11 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
         contestsCollectionView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
         contestsCollectionView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
         
-        viewModel.getContests()
+        if viewModel.isLoggedIn {
+            viewModel.getContests()
+        } else {
+            viewModel.getPublicContests()
+        }
     }
     
     private func getContestsCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
@@ -68,12 +72,12 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
     }
     
     private func initViewModel() {
-        viewModel.didGetContestsForUser = { [weak self] in
-            self?.viewModelDidGetContestsForUser()
+        viewModel.didGetContests = { [weak self] in
+            self?.viewModelDidGetContests()
         }
     }
     
-    private func viewModelDidGetContestsForUser() {
+    private func viewModelDidGetContests() {
         DispatchQueue.main.async {
             self.contestsCollectionView.reloadData()
         }

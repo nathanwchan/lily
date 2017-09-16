@@ -31,14 +31,14 @@ class MainViewModel {
     
     //MARK: - Events
 
-    var didGetContestsForUser: (() -> Void)?
+    var didGetContests: (() -> Void)?
     var didGetMediaForUser: (() -> Void)?
     
     //MARK: - Private
     
-    private func didGetContestsForUser(contests: [Contest]?) {
+    private func didGetContests(contests: [Contest]?) {
         self.contests = contests
-        self.didGetContestsForUser?()
+        self.didGetContests?()
     }
     
     private func didGetMediaForUser(media: [Media]?) {
@@ -67,6 +67,10 @@ class MainViewModel {
     }
     
     func getContests() {
-        dataProvider.getContestsForUser(completion: self.didGetContestsForUser)
+        dataProvider.getContestsForUser(completion: self.didGetContests)
+    }
+    
+    func getPublicContests() {
+        dataProvider.getPublicContests(completion: self.didGetContests)
     }
 }

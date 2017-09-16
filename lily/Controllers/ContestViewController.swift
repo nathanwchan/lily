@@ -32,11 +32,14 @@ class ContestViewController: UIViewController {
             fatalError("No contest!")
         }
         
-        if let isLoggedIn = isLoggedIn, isLoggedIn,
-            contest.state != .Inactive {
-            self.title = contest.name
+        if let isLoggedIn = isLoggedIn, isLoggedIn {
+            if contest.state == .Inactive {
+                self.title = contest.media.type.capitalized
+            } else {
+                self.title = contest.name
+            }
         } else {
-            self.title = contest.media.type.capitalized
+            self.title = "Contest"
         }
         
         let scrollView = UIScrollView(frame: .zero)

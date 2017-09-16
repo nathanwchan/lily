@@ -13,6 +13,10 @@ class NodeDataProvider: DataProvider {
         return
     }
     
+    func getPublicContests(completion: @escaping (([Contest]?) -> Void)) {
+        return
+    }
+    
     func getMediaForUser(completion: @escaping (([Media]?) -> Void)) {
         return
     }
