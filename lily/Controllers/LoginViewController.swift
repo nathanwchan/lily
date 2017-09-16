@@ -14,6 +14,8 @@ class LoginViewController: BaseViewModelViewController<LoginViewModel> {
 
         view.backgroundColor = .instagramBlue
         
+        self.navigationItem.title = "Login"
+        
         let loginButton = UIButton(frame: .zero)
         loginButton.setTitle("Fake Login", for: .normal)
         loginButton.setTitleColor(.instagramBlue, for: .normal)

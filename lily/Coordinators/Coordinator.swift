@@ -27,3 +27,8 @@ protocol NavigationCoordinator: Coordinator {
     var navigationController: UINavigationController { get set }
     init(navigationController: UINavigationController)
 }
+
+protocol TabBarCoordinator: Coordinator {
+    var tabBarController: UITabBarController { get set }
+    init(tabBarController: UITabBarController)
+}

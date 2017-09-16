@@ -27,14 +27,12 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
         view.backgroundColor = .white
         self.automaticallyAdjustsScrollViewInsets = false
         
-        self.title = "contest.guru"
-        
         if viewModel.isLoggedIn {
+            self.navigationItem.title = "Profile"
             let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(self.logoutButtonClicked))
             self.navigationItem.rightBarButtonItem = logoutBarButtonItem
         } else {
-            let loginBarButtonItem = UIBarButtonItem(title: "Login", style: .plain, target: self, action: #selector(self.loginButtonClicked))
-            self.navigationItem.rightBarButtonItem = loginBarButtonItem
+            self.navigationItem.title = "Public"
         }
         
         contestsCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: getContestsCollectionViewFlowLayout())
@@ -81,10 +79,6 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
         DispatchQueue.main.async {
             self.contestsCollectionView.reloadData()
         }
-    }
-    
-    func loginButtonClicked(sender: UIBarButtonItem) {
-        viewModel.didClickLogin()
     }
     
     func logoutButtonClicked(sender: UIBarButtonItem) {

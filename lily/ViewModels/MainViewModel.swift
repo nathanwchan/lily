@@ -9,7 +9,6 @@
 import Foundation
 
 protocol MainViewModelDelegate: class {
-    func mainViewDidClickLogin(_ mainViewModel: MainViewModel)
     func mainViewDidClickLogout(_ mainViewModel: MainViewModel)
     func mainView(_ mainViewModel: MainViewModel, didSelectContest contest: Contest)
     func mainView(_ mainViewModel: MainViewModel, didSelectMedia media: Media)
@@ -47,10 +46,6 @@ class MainViewModel {
     }
     
     //MARK: - Actions
-    
-    func didClickLogin() {
-        self.delegate?.mainViewDidClickLogin(self)
-    }
     
     func didClickLogout() {
         self.delegate?.mainViewDidClickLogout(self)

@@ -22,7 +22,7 @@ class CreateContestViewController: UIViewController {
         
         view.backgroundColor = .instagramBlue
         
-        self.title = "Create a new contest"
+        self.navigationItem.title = "Create a new contest"
         
         let cancelBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelButtonTapped))
         self.navigationItem.rightBarButtonItem = cancelBarButtonItem

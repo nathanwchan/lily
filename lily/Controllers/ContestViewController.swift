@@ -34,12 +34,12 @@ class ContestViewController: UIViewController {
         
         if let isLoggedIn = isLoggedIn, isLoggedIn {
             if contest.state == .Inactive {
-                self.title = contest.media.type.capitalized
+                self.navigationItem.title = contest.media.type.capitalized
             } else {
-                self.title = contest.name
+                self.navigationItem.title = contest.name
             }
         } else {
-            self.title = "Contest"
+            self.navigationItem.title = "Contest"
         }
         
         let scrollView = UIScrollView(frame: .zero)

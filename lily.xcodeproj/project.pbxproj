@@ -19,7 +19,7 @@
 		C1F451B91F67405E0033DAEF /* contest_guru_40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F451B21F67405E0033DAEF /* contest_guru_40@2x.png */; };
 		C1F451BA1F67405E0033DAEF /* contest_guru_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F451B31F67405E0033DAEF /* contest_guru_60@2x.png */; };
 		C1F451BB1F67405E0033DAEF /* contest_guru_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F451B41F67405E0033DAEF /* contest_guru_60@3x.png */; };
-		C1F451BE1F69A3170033DAEF /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451BD1F69A3170033DAEF /* AppCoordinator.swift */; };
+		C1F451BE1F69A3170033DAEF /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451BD1F69A3170033DAEF /* MainCoordinator.swift */; };
 		C1F451C11F69AFF40033DAEF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451C01F69AFF40033DAEF /* MainViewController.swift */; };
 		C1F451C31F69B0A00033DAEF /* ContestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451C21F69B0A00033DAEF /* ContestViewController.swift */; };
 		C1F451C51F69B0B10033DAEF /* CreateContestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451C41F69B0B10033DAEF /* CreateContestViewController.swift */; };
@@ -43,6 +43,10 @@
 		C1F451F31F6CAB0D0033DAEF /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451F21F6CAB0D0033DAEF /* LoginCoordinator.swift */; };
 		C1F451F51F6CAB510033DAEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451F41F6CAB510033DAEF /* LoginViewController.swift */; };
 		C1F451F71F6CABC60033DAEF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451F61F6CABC60033DAEF /* LoginViewModel.swift */; };
+		C1F451FB1F6CD6AA0033DAEF /* profile-black-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F451F81F6CD6AA0033DAEF /* profile-black-icon.png */; };
+		C1F451FC1F6CD6AA0033DAEF /* profile-white-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F451F91F6CD6AA0033DAEF /* profile-white-icon.png */; };
+		C1F451FD1F6CD6AA0033DAEF /* public-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F451FA1F6CD6AA0033DAEF /* public-icon.png */; };
+		C1F451FF1F6CDAE80033DAEF /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451FE1F6CDAE80033DAEF /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +99,7 @@
 		C1F451B21F67405E0033DAEF /* contest_guru_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contest_guru_40@2x.png"; path = "Icons/contest_guru_40@2x.png"; sourceTree = "<group>"; };
 		C1F451B31F67405E0033DAEF /* contest_guru_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contest_guru_60@2x.png"; path = "Icons/contest_guru_60@2x.png"; sourceTree = "<group>"; };
 		C1F451B41F67405E0033DAEF /* contest_guru_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contest_guru_60@3x.png"; path = "Icons/contest_guru_60@3x.png"; sourceTree = "<group>"; };
-		C1F451BD1F69A3170033DAEF /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCoordinator.swift; path = Coordinators/AppCoordinator.swift; sourceTree = "<group>"; };
+		C1F451BD1F69A3170033DAEF /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainCoordinator.swift; path = Coordinators/MainCoordinator.swift; sourceTree = "<group>"; };
 		C1F451C01F69AFF40033DAEF /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Controllers/MainViewController.swift; sourceTree = "<group>"; };
 		C1F451C21F69B0A00033DAEF /* ContestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContestViewController.swift; path = Controllers/ContestViewController.swift; sourceTree = "<group>"; };
 		C1F451C41F69B0B10033DAEF /* CreateContestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateContestViewController.swift; path = Controllers/CreateContestViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +122,10 @@
 		C1F451F21F6CAB0D0033DAEF /* LoginCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginCoordinator.swift; path = Coordinators/LoginCoordinator.swift; sourceTree = "<group>"; };
 		C1F451F41F6CAB510033DAEF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		C1F451F61F6CABC60033DAEF /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = ViewModels/LoginViewModel.swift; sourceTree = "<group>"; };
+		C1F451F81F6CD6AA0033DAEF /* profile-black-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-black-icon.png"; path = "Icons/profile-black-icon.png"; sourceTree = "<group>"; };
+		C1F451F91F6CD6AA0033DAEF /* profile-white-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-white-icon.png"; path = "Icons/profile-white-icon.png"; sourceTree = "<group>"; };
+		C1F451FA1F6CD6AA0033DAEF /* public-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "public-icon.png"; path = "Icons/public-icon.png"; sourceTree = "<group>"; };
+		C1F451FE1F6CDAE80033DAEF /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCoordinator.swift; path = Coordinators/AppCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +216,9 @@
 		C1F451AD1F673F550033DAEF /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				C1F451F81F6CD6AA0033DAEF /* profile-black-icon.png */,
+				C1F451F91F6CD6AA0033DAEF /* profile-white-icon.png */,
+				C1F451FA1F6CD6AA0033DAEF /* public-icon.png */,
 				C1F451AE1F67405E0033DAEF /* contest_guru_20@2x.png */,
 				C1F451AF1F67405E0033DAEF /* contest_guru_20@3x.png */,
 				C1F451B01F67405E0033DAEF /* contest_guru_29@2x.png */,
@@ -223,7 +234,8 @@
 			isa = PBXGroup;
 			children = (
 				C1F451CC1F69D20B0033DAEF /* Coordinator.swift */,
-				C1F451BD1F69A3170033DAEF /* AppCoordinator.swift */,
+				C1F451FE1F6CDAE80033DAEF /* AppCoordinator.swift */,
+				C1F451BD1F69A3170033DAEF /* MainCoordinator.swift */,
 				C1F451F21F6CAB0D0033DAEF /* LoginCoordinator.swift */,
 				C1F451CA1F69B0F90033DAEF /* ViewContestCoordinator.swift */,
 				C1F451C81F69B0EA0033DAEF /* CreateContestCoordinator.swift */,
@@ -415,8 +427,11 @@
 				C1F451871F673DC00033DAEF /* Assets.xcassets in Resources */,
 				C1F451B51F67405E0033DAEF /* contest_guru_20@2x.png in Resources */,
 				C1F451BB1F67405E0033DAEF /* contest_guru_60@3x.png in Resources */,
+				C1F451FC1F6CD6AA0033DAEF /* profile-white-icon.png in Resources */,
 				C1F451BA1F67405E0033DAEF /* contest_guru_60@2x.png in Resources */,
+				C1F451FB1F6CD6AA0033DAEF /* profile-black-icon.png in Resources */,
 				C1F451B71F67405E0033DAEF /* contest_guru_29@2x.png in Resources */,
+				C1F451FD1F6CD6AA0033DAEF /* public-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,9 +456,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1F451FF1F6CDAE80033DAEF /* AppCoordinator.swift in Sources */,
 				C1F451F71F6CABC60033DAEF /* LoginViewModel.swift in Sources */,
 				C1F451CF1F69D4C70033DAEF /* Contest.swift in Sources */,
-				C1F451BE1F69A3170033DAEF /* AppCoordinator.swift in Sources */,
+				C1F451BE1F69A3170033DAEF /* MainCoordinator.swift in Sources */,
 				C1F451DA1F6AE56A0033DAEF /* NodeDataProvider.swift in Sources */,
 				C1F451D21F6A49A70033DAEF /* BaseViewModelViewController.swift in Sources */,
 				C1F451C51F69B0B10033DAEF /* CreateContestViewController.swift in Sources */,

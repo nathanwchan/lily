@@ -2,62 +2,56 @@
 //  AppCoordinator.swift
 //  lily
 //
-//  Created by Nathan Chan on 9/13/17.
+//  Created by Nathan Chan on 9/15/17.
 //  Copyright © 2017 Nathan Chan. All rights reserved.
 //
 
 import UIKit
 
-class AppCoordinator: NSObject, NavigationCoordinator {
-    var navigationController: UINavigationController
+class AppCoordinator: NSObject, TabBarCoordinator {
+    var tabBarController: UITabBarController
     var childCoordinators: [Coordinator] = []
+    let publicTabNavigationController = UINavigationController()
+    let profileTabNavigationController = UINavigationController()
     
     fileprivate var isLoggedIn = false
     
-    required init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    required init(tabBarController: UITabBarController) {
+        self.tabBarController = tabBarController
     }
     
     func start() {
-        navigationController.delegate = self
-        
-        self.showMainViewController()
+        showLoggedInTabBarController()
     }
-
-    fileprivate func showMainViewController() {
-        let mainViewModel = MainViewModel(isLoggedIn: isLoggedIn)
-        let mainViewController = MainViewController(viewModel: mainViewModel)
-        mainViewModel.delegate = self
-        self.navigationController.pushViewController(mainViewController, animated: false)
+    
+    fileprivate func initAndStartMainCoordinator(navigationController: UINavigationController, isLoggedIn: Bool = false) {
+        let mainCoordinator = MainCoordinator(navigationController: navigationController, isLoggedIn: isLoggedIn)
+        mainCoordinator.delegate = self
+        mainCoordinator.start()
+        self.addChildCoordinator(mainCoordinator)
     }
-}
-
-extension AppCoordinator: MainViewModelDelegate {
-    func mainViewDidClickLogin(_ mainViewModel: MainViewModel) {
+    
+    fileprivate func initAndStartLoginCoordinator(navigationController: UINavigationController) {
         let loginCoordinator = LoginCoordinator(navigationController: navigationController)
         loginCoordinator.delegate = self
         loginCoordinator.start()
         self.addChildCoordinator(loginCoordinator)
     }
     
-    func mainViewDidClickLogout(_ mainViewModel: MainViewModel) {
-        self.isLoggedIn = false
+    fileprivate func showLoggedInTabBarController() {
+        self.tabBarController.automaticallyAdjustsScrollViewInsets = false
         
-        self.navigationController.viewControllers = []
-        self.showMainViewController()
-    }
-    
-    func mainView(_ mainViewModel: MainViewModel, didSelectContest contest: Contest) {
-        let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest, isLoggedIn: isLoggedIn)
-        viewContestCoordinator.start()
-        self.addChildCoordinator(viewContestCoordinator)
-    }
-    
-    func mainView(_ mainViewModel: MainViewModel, didSelectMedia media: Media){
-        let contest = Contest(name: "Contest Name", media: media)
-        let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest)
-        viewContestCoordinator.start()
-        self.addChildCoordinator(viewContestCoordinator)
+        let publicTabBarItem = UITabBarItem(title: "Public", image: UIImage(named: "public-icon.png"), tag: 0)
+        publicTabNavigationController.tabBarItem = publicTabBarItem
+        
+        let profileTabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile-white-icon.png"), tag: 1)
+        profileTabNavigationController.tabBarItem = profileTabBarItem
+        
+        initAndStartMainCoordinator(navigationController: publicTabNavigationController)
+        
+        initAndStartLoginCoordinator(navigationController: profileTabNavigationController)
+        
+        tabBarController.viewControllers = [publicTabNavigationController, profileTabNavigationController]
     }
 }
 
@@ -65,27 +59,22 @@ extension AppCoordinator: LoginCoordinatorDelegate {
     func loginCoordinatorDelegateDidLogin(_ loginCoordinator: LoginCoordinator) {
         self.isLoggedIn = true
         
-        self.navigationController.viewControllers = []
+        profileTabNavigationController.viewControllers = []
         self.removeChildCoordinator(loginCoordinator)
-        self.showMainViewController()
+        
+        initAndStartMainCoordinator(navigationController: profileTabNavigationController, isLoggedIn: isLoggedIn)
     }
 }
 
-extension AppCoordinator: UINavigationControllerDelegate {
-    // Handling back navigation from a sub-navigation-flow
-    // http://khanlou.com/2017/05/back-buttons-and-coordinators/
-    
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        // ensure the view controller is popping
-        guard
-            let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from),
-            !navigationController.viewControllers.contains(fromViewController) else {
-                return
-        }
+extension AppCoordinator: MainCoordinatorDelegate {
+    func mainCoordinateDelegateDidLogout(_ mainCoordinator: MainCoordinator) {
+        self.isLoggedIn = false
         
-        // clean out ViewContestCoordinator from child coordinators
-        if fromViewController is ContestViewController {
-            childCoordinators = childCoordinators.filter { !($0.self is ViewContestCoordinator) }
-        }
+        profileTabNavigationController.viewControllers = []
+        self.removeChildCoordinator(mainCoordinator)
+        
+        initAndStartLoginCoordinator(navigationController: profileTabNavigationController)
+        
+        tabBarController.selectedIndex = 0
     }
 }

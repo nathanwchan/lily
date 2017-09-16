@@ -17,6 +17,6 @@ class ResultsViewController: UIViewController {
 
         view.backgroundColor = .instagramBlue
         
-        self.title = "Results"
+        self.navigationItem.title = "Results"
     }
 }
