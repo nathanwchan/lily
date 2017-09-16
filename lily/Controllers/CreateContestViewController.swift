@@ -56,12 +56,10 @@ class CreateContestViewController: UIViewController {
     }
 
     func cancelButtonTapped(sender: UIBarButtonItem) {
-        print("cancelButtonTapped")
         self.delegate?.createContestViewControllerDidTapCancel(self)
     }
 
     func createContestButtonClicked(sender: Any?) {
-        print("createContestButtonClicked")
         self.delegate?.createContestViewController(self, didCreateContest: Contest(name: "createContest", media: testMedia))
     }
 }
