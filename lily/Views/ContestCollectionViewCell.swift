@@ -45,7 +45,14 @@ class ContestCollectionViewCell: UICollectionViewCell {
     }
     
     func configureWith(_ contest: Contest, showLabel: Bool = false, buttonHeight: CGFloat = 0) {
+        for subview in stackView.arrangedSubviews {
+            stackView.removeArrangedSubview(subview)
+            subview.removeFromSuperview()
+        }
+        
         imageView.image(fromUrl: contest.media.imageUrl)
+        
+        stackView.addArrangedSubview(imageView)
         
         if showLabel {
             let label = UILabel()

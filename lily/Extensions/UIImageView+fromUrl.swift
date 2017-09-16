@@ -18,13 +18,6 @@ extension UIImageView {
             if let response = data {
                 DispatchQueue.main.async {
                     self.image = UIImage(data: response)
-//                    let c = NSLayoutConstraint(item: self, attribute: .width,
-//                                               relatedBy: .equal,
-//                                               toItem: self, attribute: .height,
-//                                               multiplier: aspectRatio, constant: 0)
-//                    // a priority above fitting size level and below low
-//                    c.priority = (UILayoutPriorityDefaultLow + UILayoutPriorityFittingSizeLevel) / 2.0
-//                    self.addConstraint(c)
                     
                     if readjustFrameSize {
                         guard let image = self.image else { return }
