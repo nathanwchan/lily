@@ -25,7 +25,7 @@ class CreateContestViewController: UIViewController {
         self.title = "Create a new contest"
         
         let cancelBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelButtonTapped))
-        self.navigationItem.leftBarButtonItem = cancelBarButtonItem
+        self.navigationItem.rightBarButtonItem = cancelBarButtonItem
         
         let stackView = UIStackView(frame: .zero)
         stackView.translatesAutoresizingMaskIntoConstraints = false
