@@ -12,6 +12,8 @@ class AppCoordinator: NSObject, NavigationCoordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     
+    fileprivate var isLoggedIn = false
+    
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -22,8 +24,8 @@ class AppCoordinator: NSObject, NavigationCoordinator {
         self.showMainViewController()
     }
 
-    private func showMainViewController() {
-        let mainViewModel = MainViewModel()
+    fileprivate func showMainViewController() {
+        let mainViewModel = MainViewModel(isLoggedIn: isLoggedIn)
         let mainViewController = MainViewController(viewModel: mainViewModel)
         mainViewModel.delegate = self
         self.navigationController.pushViewController(mainViewController, animated: false)
@@ -31,8 +33,22 @@ class AppCoordinator: NSObject, NavigationCoordinator {
 }
 
 extension AppCoordinator: MainViewModelDelegate {
+    func mainViewDidClickLogin(_ mainViewModel: MainViewModel) {
+        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+        loginCoordinator.delegate = self
+        loginCoordinator.start()
+        self.addChildCoordinator(loginCoordinator)
+    }
+    
+    func mainViewDidClickLogout(_ mainViewModel: MainViewModel) {
+        self.isLoggedIn = false
+        
+        self.navigationController.viewControllers = []
+        self.showMainViewController()
+    }
+    
     func mainView(_ mainViewModel: MainViewModel, didSelectContest contest: Contest) {
-        let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest)
+        let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest, isLoggedIn: isLoggedIn)
         viewContestCoordinator.start()
         self.addChildCoordinator(viewContestCoordinator)
     }
@@ -42,6 +58,16 @@ extension AppCoordinator: MainViewModelDelegate {
         let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest)
         viewContestCoordinator.start()
         self.addChildCoordinator(viewContestCoordinator)
+    }
+}
+
+extension AppCoordinator: LoginCoordinatorDelegate {
+    func loginCoordinatorDelegateDidLogin(_ loginCoordinator: LoginCoordinator) {
+        self.isLoggedIn = true
+        
+        self.navigationController.viewControllers = []
+        self.removeChildCoordinator(loginCoordinator)
+        self.showMainViewController()
     }
 }
 

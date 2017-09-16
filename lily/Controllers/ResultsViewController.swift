@@ -15,7 +15,7 @@ class ResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .magenta
+        view.backgroundColor = .instagramBlue
         
         self.title = "Results"
     }

@@ -12,15 +12,17 @@ import SafariServices
 class ViewContestCoordinator: NavigationCoordinator {
     var navigationController: UINavigationController
     var contest: Contest?
+    var isLoggedIn: Bool?
     var childCoordinators: [Coordinator] = []
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
-    convenience init(navigationController: UINavigationController, contest: Contest) {
+    convenience init(navigationController: UINavigationController, contest: Contest, isLoggedIn: Bool = false) {
         self.init(navigationController: navigationController)
         self.contest = contest
+        self.isLoggedIn = isLoggedIn
     }
     
     func start() {
@@ -31,6 +33,7 @@ class ViewContestCoordinator: NavigationCoordinator {
         let contestViewController = ContestViewController()
         contestViewController.delegate = self
         contestViewController.contest = contest
+        contestViewController.isLoggedIn = isLoggedIn
         self.navigationController.pushViewController(contestViewController, animated: true)
     }
     

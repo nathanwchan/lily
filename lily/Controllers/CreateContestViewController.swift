@@ -20,7 +20,7 @@ class CreateContestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .purple
+        view.backgroundColor = .instagramBlue
         
         self.title = "Create a new contest"
         
@@ -48,8 +48,8 @@ class CreateContestViewController: UIViewController {
         let createContestButton = UIButton(frame: .zero)
         createContestButton.center = view.center
         createContestButton.setTitle("Create Contest", for: .normal)
-        createContestButton.setTitleColor(.black, for: .normal)
-        createContestButton.backgroundColor = .yellow
+        createContestButton.setTitleColor(.instagramBlue, for: .normal)
+        createContestButton.backgroundColor = .white
         createContestButton.addTarget(self, action: #selector(self.createContestButtonClicked(sender:)), for: .touchUpInside)
         
         stackView.addArrangedSubview(createContestButton)

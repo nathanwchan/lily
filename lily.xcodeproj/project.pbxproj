@@ -40,6 +40,9 @@
 		C1F451EC1F6B426B0033DAEF /* UIImageView+fromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451EB1F6B426B0033DAEF /* UIImageView+fromUrl.swift */; };
 		C1F451EF1F6CA50D0033DAEF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451EE1F6CA50D0033DAEF /* Globals.swift */; };
 		C1F451F11F6CA5390033DAEF /* UIColor+instagramBlue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451F01F6CA5390033DAEF /* UIColor+instagramBlue.swift */; };
+		C1F451F31F6CAB0D0033DAEF /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451F21F6CAB0D0033DAEF /* LoginCoordinator.swift */; };
+		C1F451F51F6CAB510033DAEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451F41F6CAB510033DAEF /* LoginViewController.swift */; };
+		C1F451F71F6CABC60033DAEF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451F61F6CABC60033DAEF /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +115,9 @@
 		C1F451EB1F6B426B0033DAEF /* UIImageView+fromUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+fromUrl.swift"; path = "Extensions/UIImageView+fromUrl.swift"; sourceTree = "<group>"; };
 		C1F451EE1F6CA50D0033DAEF /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Globals.swift; path = Utils/Globals.swift; sourceTree = "<group>"; };
 		C1F451F01F6CA5390033DAEF /* UIColor+instagramBlue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+instagramBlue.swift"; path = "Extensions/UIColor+instagramBlue.swift"; sourceTree = "<group>"; };
+		C1F451F21F6CAB0D0033DAEF /* LoginCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginCoordinator.swift; path = Coordinators/LoginCoordinator.swift; sourceTree = "<group>"; };
+		C1F451F41F6CAB510033DAEF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
+		C1F451F61F6CABC60033DAEF /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = ViewModels/LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,8 +224,9 @@
 			children = (
 				C1F451CC1F69D20B0033DAEF /* Coordinator.swift */,
 				C1F451BD1F69A3170033DAEF /* AppCoordinator.swift */,
-				C1F451C81F69B0EA0033DAEF /* CreateContestCoordinator.swift */,
+				C1F451F21F6CAB0D0033DAEF /* LoginCoordinator.swift */,
 				C1F451CA1F69B0F90033DAEF /* ViewContestCoordinator.swift */,
+				C1F451C81F69B0EA0033DAEF /* CreateContestCoordinator.swift */,
 			);
 			name = coordinators;
 			sourceTree = "<group>";
@@ -229,6 +236,7 @@
 			children = (
 				C1F451D11F6A49A70033DAEF /* BaseViewModelViewController.swift */,
 				C1F451C01F69AFF40033DAEF /* MainViewController.swift */,
+				C1F451F41F6CAB510033DAEF /* LoginViewController.swift */,
 				C1F451C41F69B0B10033DAEF /* CreateContestViewController.swift */,
 				C1F451C21F69B0A00033DAEF /* ContestViewController.swift */,
 				C1F451C61F69B0D80033DAEF /* ResultsViewController.swift */,
@@ -249,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				C1F451D41F6AE29F0033DAEF /* MainViewModel.swift */,
+				C1F451F61F6CABC60033DAEF /* LoginViewModel.swift */,
 			);
 			name = viewmodels;
 			sourceTree = "<group>";
@@ -432,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1F451F71F6CABC60033DAEF /* LoginViewModel.swift in Sources */,
 				C1F451CF1F69D4C70033DAEF /* Contest.swift in Sources */,
 				C1F451BE1F69A3170033DAEF /* AppCoordinator.swift in Sources */,
 				C1F451DA1F6AE56A0033DAEF /* NodeDataProvider.swift in Sources */,
@@ -441,6 +451,8 @@
 				C1F451EF1F6CA50D0033DAEF /* Globals.swift in Sources */,
 				C1F451E01F6B1BAB0033DAEF /* Media.swift in Sources */,
 				C1F451E91F6B3AD90033DAEF /* ContestCollectionViewCell.swift in Sources */,
+				C1F451F31F6CAB0D0033DAEF /* LoginCoordinator.swift in Sources */,
+				C1F451F51F6CAB510033DAEF /* LoginViewController.swift in Sources */,
 				C1F451DE1F6AF7220033DAEF /* TestInstagramDataProvider.swift in Sources */,
 				C1F451C91F69B0EA0033DAEF /* CreateContestCoordinator.swift in Sources */,
 				C1F451801F673DC00033DAEF /* AppDelegate.swift in Sources */,

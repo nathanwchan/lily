@@ -19,6 +19,7 @@ class ContestViewController: UIViewController {
     weak var delegate: ContestViewControllerDelegate?
     
     var contest: Contest?
+    var isLoggedIn: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,25 +72,27 @@ class ContestViewController: UIViewController {
         detailStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: spacing).isActive = true
         detailStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -spacing).isActive = true
         
-        let actionButton = UIButton(frame: .zero)
-        actionButton.center = view.center
-        switch contest.state {
-        case .Inactive:
-            actionButton.setTitle("Create Contest", for: .normal)
-            actionButton.setTitleColor(.white, for: .normal)
-            actionButton.backgroundColor = .instagramBlue
-        case .InProgress:
-            actionButton.setTitle("Contest currently in progress!", for: .normal)
-            actionButton.setTitleColor(.black, for: .normal)
-            actionButton.backgroundColor = .white
-        case .Complete:
-            actionButton.setTitle("See Results", for: .normal)
-            actionButton.setTitleColor(.white, for: .normal)
-            actionButton.backgroundColor = .instagramBlue
+        if let isLoggedIn = isLoggedIn, isLoggedIn {
+            let actionButton = UIButton(frame: .zero)
+            actionButton.center = view.center
+            switch contest.state {
+            case .Inactive:
+                actionButton.setTitle("Create Contest", for: .normal)
+                actionButton.setTitleColor(.white, for: .normal)
+                actionButton.backgroundColor = .instagramBlue
+            case .InProgress:
+                actionButton.setTitle("Contest currently in progress!", for: .normal)
+                actionButton.setTitleColor(.black, for: .normal)
+                actionButton.backgroundColor = .white
+            case .Complete:
+                actionButton.setTitle("See Results", for: .normal)
+                actionButton.setTitleColor(.white, for: .normal)
+                actionButton.backgroundColor = .instagramBlue
+            }
+            actionButton.addTarget(self, action: #selector(self.actionButtonClicked(sender:)), for: .touchUpInside)
+            
+            detailStackView.addArrangedSubview(actionButton)
         }
-        actionButton.addTarget(self, action: #selector(self.actionButtonClicked(sender:)), for: .touchUpInside)
-        
-        detailStackView.addArrangedSubview(actionButton)
         
         let captionLabel = UILabel(frame: .zero)
         let attrs: [String: AnyObject] = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 14)!]

@@ -15,7 +15,6 @@ protocol MainViewControllerDelegate: class {
 
 class MainViewController: BaseViewModelViewController<MainViewModel>, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var loggedIn: Bool = true
     private var contestsCollectionView: UICollectionView!
     private let contestCellReuseIdentifier = "contestCell"
     private let collectionViewCellButtonHeight: CGFloat = 25
@@ -30,8 +29,13 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
         
         self.title = "contest.guru"
         
-        let loginBarButtonItem = UIBarButtonItem(title: "Login", style: .plain, target: self, action: #selector(self.loginButtonClicked))
-        self.navigationItem.rightBarButtonItem = loginBarButtonItem
+        if viewModel.isLoggedIn {
+            let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(self.logoutButtonClicked))
+            self.navigationItem.rightBarButtonItem = logoutBarButtonItem
+        } else {
+            let loginBarButtonItem = UIBarButtonItem(title: "Login", style: .plain, target: self, action: #selector(self.loginButtonClicked))
+            self.navigationItem.rightBarButtonItem = loginBarButtonItem
+        }
         
         contestsCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: getContestsCollectionViewFlowLayout())
         contestsCollectionView.register(ContestCollectionViewCell.self, forCellWithReuseIdentifier: contestCellReuseIdentifier)
@@ -54,7 +58,7 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
         let flowLayout = UICollectionViewFlowLayout()
         let width = (view.bounds.width - 2) / 3
         var height = width
-        if loggedIn {
+        if viewModel.isLoggedIn {
             height += collectionViewCellButtonHeight
         }
         flowLayout.itemSize = CGSize(width: width, height: height)
@@ -79,6 +83,17 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
         viewModel.didClickLogin()
     }
     
+    func logoutButtonClicked(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Logout?", message: "Are you sure you want to logout?", preferredStyle: .alert)
+        let logoutAction = UIAlertAction(title: "Yes", style: .default) { (_: UIAlertAction) -> Void in
+            self.viewModel.didClickLogout()
+        }
+        let cancelAction = UIAlertAction(title: "No", style: .cancel) { (_: UIAlertAction) -> Void in }
+        alertController.addAction(cancelAction)
+        alertController.addAction(logoutAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     //MARK: UICollectionView delegate methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -90,7 +105,7 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
             fatalError("no contests loaded")
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: contestCellReuseIdentifier, for: indexPath) as! ContestCollectionViewCell
-        cell.configureWith(contests[indexPath.row], showLabel: loggedIn, buttonHeight: collectionViewCellButtonHeight)
+        cell.configureWith(contests[indexPath.row], showLabel: viewModel.isLoggedIn, buttonHeight: collectionViewCellButtonHeight)
         return cell
     }
     
