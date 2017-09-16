@@ -68,7 +68,7 @@ class ContestCollectionViewCell: UICollectionViewCell {
                 label.textColor = .green
             }
             label.font = UIFont(name: "HelveticaNeue", size: 14)
-            label.backgroundColor = UIColor(red: 0.22, green: 0.59, blue: 0.94, alpha: 1.0)
+            label.backgroundColor = .instagramBlue
             label.textAlignment = .center
             
             label.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true

@@ -11,6 +11,7 @@ import UIKit
 protocol ContestViewControllerDelegate: class {
     func contestViewController(_ contestViewController: ContestViewController, didClickCreateContest contest: Contest)
     func contestViewController(_ contestViewController: ContestViewController, didClickSeeResults contest: Contest)
+    func contestViewController(_ contestViewController: ContestViewController, didClickViewOnIG contest: Contest)
 }
 
 class ContestViewController: UIViewController {
@@ -70,6 +71,26 @@ class ContestViewController: UIViewController {
         detailStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: spacing).isActive = true
         detailStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -spacing).isActive = true
         
+        let actionButton = UIButton(frame: .zero)
+        actionButton.center = view.center
+        switch contest.state {
+        case .Inactive:
+            actionButton.setTitle("Create Contest", for: .normal)
+            actionButton.setTitleColor(.white, for: .normal)
+            actionButton.backgroundColor = .instagramBlue
+        case .InProgress:
+            actionButton.setTitle("Contest currently in progress!", for: .normal)
+            actionButton.setTitleColor(.black, for: .normal)
+            actionButton.backgroundColor = .white
+        case .Complete:
+            actionButton.setTitle("See Results", for: .normal)
+            actionButton.setTitleColor(.white, for: .normal)
+            actionButton.backgroundColor = .instagramBlue
+        }
+        actionButton.addTarget(self, action: #selector(self.actionButtonClicked(sender:)), for: .touchUpInside)
+        
+        detailStackView.addArrangedSubview(actionButton)
+        
         let captionLabel = UILabel(frame: .zero)
         let attrs: [String: AnyObject] = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 14)!]
         let attributedString = NSMutableAttributedString(string: contest.media.username, attributes: attrs)
@@ -79,33 +100,21 @@ class ContestViewController: UIViewController {
             attributedString.append(NSMutableAttributedString(string: " \(caption)", attributes: attrs))
         }
         
-        
-        let actionButton = UIButton(frame: .zero)
-        actionButton.center = view.center
-        switch contest.state {
-        case .Inactive:
-            actionButton.setTitle("Create Contest", for: .normal)
-            actionButton.setTitleColor(.white, for: .normal)
-            actionButton.backgroundColor = UIColor(red: 0.22, green: 0.59, blue: 0.94, alpha: 1.0)
-        case .InProgress:
-            actionButton.setTitle("Contest currently in progress!", for: .normal)
-            actionButton.setTitleColor(.black, for: .normal)
-            actionButton.backgroundColor = .white
-        case .Complete:
-            actionButton.setTitle("See Results", for: .normal)
-            actionButton.setTitleColor(.white, for: .normal)
-            actionButton.backgroundColor = UIColor(red: 0.22, green: 0.59, blue: 0.94, alpha: 1.0)
-        }
-        actionButton.addTarget(self, action: #selector(self.actionButtonClicked(sender:)), for: .touchUpInside)
-        
-        detailStackView.addArrangedSubview(actionButton)
-        
         captionLabel.attributedText = attributedString
         captionLabel.textColor = .black
         captionLabel.textAlignment = .left
         captionLabel.numberOfLines = 0
         
         detailStackView.addArrangedSubview(captionLabel)
+        
+        let viewOnIGButton = UIButton(frame: .zero)
+        viewOnIGButton.center = view.center
+        viewOnIGButton.setTitle("View on Instagram", for: .normal)
+        viewOnIGButton.setTitleColor(.white, for: .normal)
+        viewOnIGButton.backgroundColor = .instagramBlue
+        viewOnIGButton.addTarget(self, action: #selector(self.viewOnIGButtonClicked(sender:)), for: .touchUpInside)
+        
+        detailStackView.addArrangedSubview(viewOnIGButton)
     }
     
     func actionButtonClicked(sender: Any?) {
@@ -120,5 +129,12 @@ class ContestViewController: UIViewController {
         case .Complete:
             self.delegate?.contestViewController(self, didClickSeeResults: contest)
         }
+    }
+    
+    func viewOnIGButtonClicked(sender: Any?) {
+        guard let contest = contest else {
+            return
+        }
+        self.delegate?.contestViewController(self, didClickViewOnIG: contest)
     }
 }

@@ -38,6 +38,8 @@
 		C1F451E31F6B1E230033DAEF /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C1F451E11F6B1E230033DAEF /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1F451E91F6B3AD90033DAEF /* ContestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451E81F6B3AD90033DAEF /* ContestCollectionViewCell.swift */; };
 		C1F451EC1F6B426B0033DAEF /* UIImageView+fromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451EB1F6B426B0033DAEF /* UIImageView+fromUrl.swift */; };
+		C1F451EF1F6CA50D0033DAEF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451EE1F6CA50D0033DAEF /* Globals.swift */; };
+		C1F451F11F6CA5390033DAEF /* UIColor+instagramBlue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451F01F6CA5390033DAEF /* UIColor+instagramBlue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,8 @@
 		C1F451E11F6B1E230033DAEF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		C1F451E81F6B3AD90033DAEF /* ContestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContestCollectionViewCell.swift; path = Views/ContestCollectionViewCell.swift; sourceTree = "<group>"; };
 		C1F451EB1F6B426B0033DAEF /* UIImageView+fromUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+fromUrl.swift"; path = "Extensions/UIImageView+fromUrl.swift"; sourceTree = "<group>"; };
+		C1F451EE1F6CA50D0033DAEF /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Globals.swift; path = Utils/Globals.swift; sourceTree = "<group>"; };
+		C1F451F01F6CA5390033DAEF /* UIColor+instagramBlue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+instagramBlue.swift"; path = "Extensions/UIColor+instagramBlue.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,7 @@
 				C1F451E51F6B3A900033DAEF /* views */,
 				C1F451D01F69D4CE0033DAEF /* models */,
 				C1F451D61F6AE49B0033DAEF /* services */,
+				C1F451ED1F6CA4F10033DAEF /* utils */,
 				C1F4517F1F673DC00033DAEF /* AppDelegate.swift */,
 				C1F451861F673DC00033DAEF /* Assets.xcassets */,
 				C1F451881F673DC00033DAEF /* LaunchScreen.storyboard */,
@@ -270,8 +275,17 @@
 			isa = PBXGroup;
 			children = (
 				C1F451EB1F6B426B0033DAEF /* UIImageView+fromUrl.swift */,
+				C1F451F01F6CA5390033DAEF /* UIColor+instagramBlue.swift */,
 			);
 			name = extensions;
+			sourceTree = "<group>";
+		};
+		C1F451ED1F6CA4F10033DAEF /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				C1F451EE1F6CA50D0033DAEF /* Globals.swift */,
+			);
+			name = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,6 +438,7 @@
 				C1F451D21F6A49A70033DAEF /* BaseViewModelViewController.swift in Sources */,
 				C1F451C51F69B0B10033DAEF /* CreateContestViewController.swift in Sources */,
 				C1F451C31F69B0A00033DAEF /* ContestViewController.swift in Sources */,
+				C1F451EF1F6CA50D0033DAEF /* Globals.swift in Sources */,
 				C1F451E01F6B1BAB0033DAEF /* Media.swift in Sources */,
 				C1F451E91F6B3AD90033DAEF /* ContestCollectionViewCell.swift in Sources */,
 				C1F451DE1F6AF7220033DAEF /* TestInstagramDataProvider.swift in Sources */,
@@ -433,6 +448,7 @@
 				C1F451EC1F6B426B0033DAEF /* UIImageView+fromUrl.swift in Sources */,
 				C1F451CB1F69B0F90033DAEF /* ViewContestCoordinator.swift in Sources */,
 				C1F451C71F69B0D80033DAEF /* ResultsViewController.swift in Sources */,
+				C1F451F11F6CA5390033DAEF /* UIColor+instagramBlue.swift in Sources */,
 				C1F451CD1F69D20B0033DAEF /* Coordinator.swift in Sources */,
 				C1F451D51F6AE29F0033DAEF /* MainViewModel.swift in Sources */,
 				C1F451D81F6AE4B40033DAEF /* DataProvider.swift in Sources */,
