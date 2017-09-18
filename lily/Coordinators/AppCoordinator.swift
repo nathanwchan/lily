@@ -44,7 +44,7 @@ class AppCoordinator: NSObject, TabBarCoordinator {
         let publicTabBarItem = UITabBarItem(title: "Public", image: UIImage(named: "public-icon.png"), tag: 0)
         publicTabNavigationController.tabBarItem = publicTabBarItem
         
-        let profileTabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile-white-icon.png"), tag: 1)
+        let profileTabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile-icon.png"), tag: 1)
         profileTabNavigationController.tabBarItem = profileTabBarItem
         
         initAndStartMainCoordinator(navigationController: publicTabNavigationController)

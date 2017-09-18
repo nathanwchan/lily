@@ -28,11 +28,11 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
         self.automaticallyAdjustsScrollViewInsets = false
         
         if viewModel.isLoggedIn {
-            self.navigationItem.title = "Profile"
+            self.navigationItem.title = "My Profile"
             let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(self.logoutButtonClicked))
             self.navigationItem.rightBarButtonItem = logoutBarButtonItem
         } else {
-            self.navigationItem.title = "Public"
+            self.navigationItem.title = "contest.guru"
         }
         
         contestsCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: getContestsCollectionViewFlowLayout())
