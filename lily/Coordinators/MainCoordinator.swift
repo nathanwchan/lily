@@ -66,16 +66,6 @@ extension MainCoordinator: MainViewModelDelegate {
     }
 }
 
-extension MainCoordinator: LoginCoordinatorDelegate {
-    func loginCoordinatorDelegateDidLogin(_ loginCoordinator: LoginCoordinator) {
-        self.isLoggedIn = true
-        
-        self.navigationController.viewControllers = []
-        self.removeChildCoordinator(loginCoordinator)
-        self.showMainViewController()
-    }
-}
-
 extension MainCoordinator: UINavigationControllerDelegate {
     // Handling back navigation from a sub-navigation-flow
     // http://khanlou.com/2017/05/back-buttons-and-coordinators/
