@@ -58,7 +58,7 @@ class ContestViewController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         imageView.image(fromUrl: contest.media.imageUrl, readjustFrameSize: true)
         
-        imageView.setContentHuggingPriority(UILayoutPriorityDefaultHigh, for: .vertical)
+        imageView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         scrollView.addSubview(imageView)
         
@@ -103,11 +103,11 @@ class ContestViewController: UIViewController {
         }
         
         let captionLabel = UILabel(frame: .zero)
-        let attrs: [String: AnyObject] = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 14)!]
+        let attrs = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 14)!]
         let attributedString = NSMutableAttributedString(string: contest.media.username, attributes: attrs)
         
         if let caption = contest.media.caption {
-            let attrs: [String: AnyObject] = [NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 14)!]
+            let attrs = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 14)!]
             attributedString.append(NSMutableAttributedString(string: " \(caption)", attributes: attrs))
         }
         
@@ -128,7 +128,7 @@ class ContestViewController: UIViewController {
         detailStackView.addArrangedSubview(viewOnIGButton)
     }
     
-    func actionButtonClicked(sender: Any?) {
+    @objc func actionButtonClicked(sender: Any?) {
         guard let contest = contest else {
             return
         }
@@ -142,7 +142,7 @@ class ContestViewController: UIViewController {
         }
     }
     
-    func viewOnIGButtonClicked(sender: Any?) {
+    @objc func viewOnIGButtonClicked(sender: Any?) {
         guard let contest = contest else {
             return
         }

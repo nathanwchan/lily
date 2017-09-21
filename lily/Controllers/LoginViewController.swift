@@ -31,7 +31,7 @@ class LoginViewController: BaseViewModelViewController<LoginViewModel> {
         loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-    func loginButtonClicked(sender: Any?) {
+    @objc func loginButtonClicked(sender: Any?) {
         viewModel.didClickSubmit()
     }
 }

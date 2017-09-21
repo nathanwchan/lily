@@ -81,7 +81,7 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
         }
     }
     
-    func logoutButtonClicked(sender: UIBarButtonItem) {
+    @objc func logoutButtonClicked(sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "Logout?", message: "Are you sure you want to logout?", preferredStyle: .alert)
         let logoutAction = UIAlertAction(title: "Yes", style: .default) { (_: UIAlertAction) -> Void in
             self.viewModel.didClickLogout()

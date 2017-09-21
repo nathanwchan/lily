@@ -55,11 +55,11 @@ class CreateContestViewController: UIViewController {
         stackView.addArrangedSubview(createContestButton)
     }
 
-    func cancelButtonTapped(sender: UIBarButtonItem) {
+    @objc func cancelButtonTapped(sender: UIBarButtonItem) {
         self.delegate?.createContestViewControllerDidTapCancel(self)
     }
 
-    func createContestButtonClicked(sender: Any?) {
+    @objc func createContestButtonClicked(sender: Any?) {
         self.delegate?.createContestViewController(self, didCreateContest: Contest(name: "createContest", media: testMedia))
     }
 }
