@@ -16,8 +16,8 @@ protocol MainViewModelDelegate: class {
 
 class MainViewModel {
     var isLoggedIn: Bool!
-    private(set) var contests: [Contest]?
-    private(set) var media: [Media]?
+    private(set) var contests: [Contest] = []
+    private(set) var media: [Media] = []
     let dataProvider: DataProvider!
     
     // used by AppCoordinator
@@ -35,14 +35,21 @@ class MainViewModel {
     
     //MARK: - Private
     
-    private func didGetContests(contests: [Contest]?) {
-        self.contests = contests
+    private func didGetContests(contests: [Contest]) {
+        self.contests += contests
         self.didGetContests?()
     }
     
-    private func didGetMediaForUser(media: [Media]?) {
-        self.media = media
+    private func didGetMediaForUser(media: [Media]) {
+        self.media += media
         self.didGetMediaForUser?()
+    }
+    
+    private func getContestsMinId() -> String? {
+        // SUPER CUSTOM FOR TEST IG DATA
+        let ids = contests.flatMap({ Int($0.media.id.components(separatedBy: "_")[0]) })
+        guard let minId = ids.min() else { return nil }
+        return "\(minId)_\(contests[0].media.id.components(separatedBy: "_")[1])"
     }
     
     //MARK: - Actions
@@ -51,21 +58,29 @@ class MainViewModel {
         self.delegate?.mainViewDidClickLogout(self)
     }
     
-    func didSelectContest(at indexPath: IndexPath) {
-        if let contests = contests {
-            self.delegate?.mainView(self, didSelectContest: contests[indexPath.row])
-        }
+    func didSelectContest(_ contest: Contest) {
+        self.delegate?.mainView(self, didSelectContest: contest)
     }
     
     func getMedia() {
         dataProvider.getMediaForUser(completion: self.didGetMediaForUser)
     }
     
-    func getContests() {
-        dataProvider.getContestsForUser(completion: self.didGetContests)
+    func getContestsForUser() {
+        dataProvider.getContestsForUser(maxId: nil, completion: self.didGetContests)
+    }
+    
+    func getMoreContestsForUser() {
+        let minId = getContestsMinId()
+        dataProvider.getContestsForUser(maxId: minId, completion: self.didGetContests)
     }
     
     func getPublicContests() {
-        dataProvider.getPublicContests(completion: self.didGetContests)
+        dataProvider.getPublicContests(maxId: nil, completion: self.didGetContests)
+    }
+    
+    func getMorePublicContests() {
+        let minId = getContestsMinId()
+        dataProvider.getPublicContests(maxId: minId, completion: self.didGetContests)
     }
 }

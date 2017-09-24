@@ -9,7 +9,7 @@
 import Foundation
 
 protocol DataProvider {
-    func getContestsForUser(completion: @escaping (([Contest]?) -> Void))
-    func getPublicContests(completion: @escaping (([Contest]?) -> Void))
-    func getMediaForUser(completion: @escaping (([Media]?) -> Void))
+    func getContestsForUser(maxId: String?, completion: @escaping (([Contest]) -> Void))
+    func getPublicContests(maxId: String?, completion: @escaping (([Contest]) -> Void))
+    func getMediaForUser(completion: @escaping (([Media]) -> Void))
 }

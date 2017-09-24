@@ -12,11 +12,13 @@ class ContestCollectionViewCell: UICollectionViewCell {
     
     var stackView: UIStackView!
     var imageView: UIImageView!
+    static let buttonHeight: CGFloat = 25
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         contentView.clipsToBounds = true
+        contentView.backgroundColor = .instagramLightGray
         
         stackView = UIStackView(frame: .zero)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +46,7 @@ class ContestCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    func configureWith(_ contest: Contest, showLabel: Bool = false, buttonHeight: CGFloat = 0) {
+    func configureWith(_ contest: Contest, showLabel: Bool = false) {
         for subview in stackView.arrangedSubviews {
             stackView.removeArrangedSubview(subview)
             subview.removeFromSuperview()
@@ -71,10 +73,14 @@ class ContestCollectionViewCell: UICollectionViewCell {
             label.backgroundColor = .instagramBlue
             label.textAlignment = .center
             
-            label.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
+            label.heightAnchor.constraint(equalToConstant: ContestCollectionViewCell.buttonHeight).isActive = true
             label.widthAnchor.constraint(equalToConstant: contentView.bounds.width).isActive = true
             
             stackView.addArrangedSubview(label)
         }
+    }
+    
+    override func prepareForReuse() {
+        imageView.image = nil
     }
 }

@@ -9,15 +9,15 @@
 import Foundation
 
 class NodeDataProvider: DataProvider {
-    func getContestsForUser(completion: @escaping (([Contest]?) -> Void)) {
+    func getContestsForUser(maxId: String?, completion: @escaping (([Contest]) -> Void)) {
         return
     }
     
-    func getPublicContests(completion: @escaping (([Contest]?) -> Void)) {
+    func getPublicContests(maxId: String?, completion: @escaping (([Contest]) -> Void)) {
         return
     }
     
-    func getMediaForUser(completion: @escaping (([Media]?) -> Void)) {
+    func getMediaForUser(completion: @escaping (([Media]) -> Void)) {
         return
     }
 }

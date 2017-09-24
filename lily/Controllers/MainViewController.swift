@@ -7,17 +7,21 @@
 //
 
 import UIKit
+import IGListKit
 
 protocol MainViewControllerDelegate: class {
     func mainViewControllerDidClickCreateContest(_ mainViewController: MainViewController)
     func mainViewController(_ mainViewController: MainViewController, didSelectContest contest: Contest)
 }
 
-class MainViewController: BaseViewModelViewController<MainViewModel>, UICollectionViewDelegate, UICollectionViewDataSource {
+class MainViewController: BaseViewModelViewController<MainViewModel>, ListAdapterDataSource, IGListAdapterDelegate, ContestSectionControllerDelegate {
+    
+    lazy var adapter: ListAdapter = {
+        return ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
+    }()
     
     private var contestsCollectionView: UICollectionView!
     private let contestCellReuseIdentifier = "contestCell"
-    private let collectionViewCellButtonHeight: CGFloat = 25
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +39,14 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
             self.navigationItem.title = "contest.guru"
         }
         
-        contestsCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: getContestsCollectionViewFlowLayout())
-        contestsCollectionView.register(ContestCollectionViewCell.self, forCellWithReuseIdentifier: contestCellReuseIdentifier)
-        contestsCollectionView.delegate = self
-        contestsCollectionView.dataSource = self
+        let contestsCollectionViewLayout = ListCollectionViewLayout(stickyHeaders: false, scrollDirection: .vertical, topContentInset: 0, stretchToEdge: true)
+        contestsCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: contestsCollectionViewLayout)
         contestsCollectionView.backgroundColor = .white
         contestsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        adapter.collectionView = contestsCollectionView
+        adapter.delegate = self
+        adapter.dataSource = self
         
         view.addSubview(contestsCollectionView)
         
@@ -50,23 +56,10 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
         contestsCollectionView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
         
         if viewModel.isLoggedIn {
-            viewModel.getContests()
+            viewModel.getContestsForUser()
         } else {
             viewModel.getPublicContests()
         }
-    }
-    
-    private func getContestsCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
-        let flowLayout = UICollectionViewFlowLayout()
-        let width = (view.bounds.width - 2) / 3
-        var height = width
-        if viewModel.isLoggedIn {
-            height += collectionViewCellButtonHeight
-        }
-        flowLayout.itemSize = CGSize(width: width, height: height)
-        flowLayout.minimumInteritemSpacing = 1
-        flowLayout.minimumLineSpacing = 1
-        return flowLayout
     }
     
     private func initViewModel() {
@@ -77,7 +70,7 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
     
     private func viewModelDidGetContests() {
         DispatchQueue.main.async {
-            self.contestsCollectionView.reloadData()
+            self.adapter.performUpdates(animated: true)
         }
     }
     
@@ -92,22 +85,39 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, UICollecti
         present(alertController, animated: true, completion: nil)
     }
     
-    //MARK: UICollectionView delegate methods
+    // MARK: IGListKit delegate methods
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.contests?.count ?? 0
+    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        return viewModel.contests
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let contests = viewModel.contests else {
-            fatalError("no contests loaded")
+    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        let sectionController = ContestSectionController(isLoggedIn: viewModel.isLoggedIn)
+        sectionController.delegate = self
+        return sectionController
+    }
+    
+    func listAdapter(_ listAdapter: ListAdapter, willDisplay object: Any, at index: Int) {
+        if index == viewModel.contests.count - 1 {
+            if viewModel.isLoggedIn {
+                viewModel.getMoreContestsForUser()
+            } else {
+                viewModel.getMorePublicContests()
+            }
         }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: contestCellReuseIdentifier, for: indexPath) as! ContestCollectionViewCell
-        cell.configureWith(contests[indexPath.row], showLabel: viewModel.isLoggedIn, buttonHeight: collectionViewCellButtonHeight)
-        return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelectContest(at: indexPath)
+    func listAdapter(_ listAdapter: ListAdapter, didEndDisplaying object: Any, at index: Int) {
+        return
+    }
+    
+    func emptyView(for listAdapter: ListAdapter) -> UIView? { return nil }
+    
+    // MARK: ContestSectionController delegate methods
+    
+    func contestSectionController(_ contestSectionController: ContestSectionController, didSelectContest contest: Contest) {
+        viewModel.didSelectContest(contest)
     }
 }
+
+
