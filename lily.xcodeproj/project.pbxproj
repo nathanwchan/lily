@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C61A14D32DB9C652314F833 /* Pods_lily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BD7BC4EE3F103958EF222 /* Pods_lily.framework */; };
+		C1DC0BC71F75D6FE0005014A /* contest_guru_1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1DC0BC61F75D6FE0005014A /* contest_guru_1024.jpg */; };
 		C1F451801F673DC00033DAEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F4517F1F673DC00033DAEF /* AppDelegate.swift */; };
 		C1F451871F673DC00033DAEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1F451861F673DC00033DAEF /* Assets.xcassets */; };
 		C1F4518A1F673DC00033DAEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1F451881F673DC00033DAEF /* LaunchScreen.storyboard */; };
@@ -34,8 +36,6 @@
 		C1F451DA1F6AE56A0033DAEF /* NodeDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451D91F6AE56A0033DAEF /* NodeDataProvider.swift */; };
 		C1F451DE1F6AF7220033DAEF /* TestInstagramDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451DD1F6AF7220033DAEF /* TestInstagramDataProvider.swift */; };
 		C1F451E01F6B1BAB0033DAEF /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451DF1F6B1BAB0033DAEF /* Media.swift */; };
-		C1F451E21F6B1E230033DAEF /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F451E11F6B1E230033DAEF /* Alamofire.framework */; };
-		C1F451E31F6B1E230033DAEF /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C1F451E11F6B1E230033DAEF /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C1F451E91F6B3AD90033DAEF /* ContestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451E81F6B3AD90033DAEF /* ContestCollectionViewCell.swift */; };
 		C1F451EC1F6B426B0033DAEF /* UIImageView+fromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451EB1F6B426B0033DAEF /* UIImageView+fromUrl.swift */; };
 		C1F451EF1F6CA50D0033DAEF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451EE1F6CA50D0033DAEF /* Globals.swift */; };
@@ -76,7 +76,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C1F451E31F6B1E230033DAEF /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +83,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3697ADDDEF4FB8CF1CC450D6 /* Pods-lily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lily/Pods-lily.debug.xcconfig"; sourceTree = "<group>"; };
+		55F87B504469E9E8CB0AC8F2 /* Pods-lily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lily.release.xcconfig"; path = "Pods/Target Support Files/Pods-lily/Pods-lily.release.xcconfig"; sourceTree = "<group>"; };
+		C1DC0BC61F75D6FE0005014A /* contest_guru_1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = contest_guru_1024.jpg; path = Icons/contest_guru_1024.jpg; sourceTree = "<group>"; };
 		C1F4517C1F673DC00033DAEF /* lily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F4517F1F673DC00033DAEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1F451861F673DC00033DAEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,7 +119,6 @@
 		C1F451D91F6AE56A0033DAEF /* NodeDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeDataProvider.swift; path = Services/NodeDataProvider.swift; sourceTree = "<group>"; };
 		C1F451DD1F6AF7220033DAEF /* TestInstagramDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestInstagramDataProvider.swift; path = Services/TestInstagramDataProvider.swift; sourceTree = "<group>"; };
 		C1F451DF1F6B1BAB0033DAEF /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Media.swift; path = Models/Media.swift; sourceTree = "<group>"; };
-		C1F451E11F6B1E230033DAEF /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		C1F451E81F6B3AD90033DAEF /* ContestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContestCollectionViewCell.swift; path = Views/ContestCollectionViewCell.swift; sourceTree = "<group>"; };
 		C1F451EB1F6B426B0033DAEF /* UIImageView+fromUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+fromUrl.swift"; path = "Extensions/UIImageView+fromUrl.swift"; sourceTree = "<group>"; };
 		C1F451EE1F6CA50D0033DAEF /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Globals.swift; path = Utils/Globals.swift; sourceTree = "<group>"; };
@@ -132,6 +133,7 @@
 		C1F452021F6F8F570033DAEF /* profile-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-icon@3x.png"; path = "Icons/profile-icon@3x.png"; sourceTree = "<group>"; };
 		C1F452031F6F8F570033DAEF /* public-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "public-icon@2x.png"; path = "Icons/public-icon@2x.png"; sourceTree = "<group>"; };
 		C1F452041F6F8F570033DAEF /* public-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "public-icon@3x.png"; path = "Icons/public-icon@3x.png"; sourceTree = "<group>"; };
+		D90BD7BC4EE3F103958EF222 /* Pods_lily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1F451E21F6B1E230033DAEF /* Alamofire.framework in Frameworks */,
+				4C61A14D32DB9C652314F833 /* Pods_lily.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,14 +162,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2228162EE821CBAF9F3DF17D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3697ADDDEF4FB8CF1CC450D6 /* Pods-lily.debug.xcconfig */,
+				55F87B504469E9E8CB0AC8F2 /* Pods-lily.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6032BF60DA6F56AF6E9B5C27 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D90BD7BC4EE3F103958EF222 /* Pods_lily.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C1F451731F673DC00033DAEF = {
 			isa = PBXGroup;
 			children = (
 				C1F4517E1F673DC00033DAEF /* lily */,
-				C1F451E11F6B1E230033DAEF /* Alamofire.framework */,
 				C1F451931F673DC00033DAEF /* lilyTests */,
 				C1F4519E1F673DC00033DAEF /* lilyUITests */,
 				C1F4517D1F673DC00033DAEF /* Products */,
+				2228162EE821CBAF9F3DF17D /* Pods */,
+				6032BF60DA6F56AF6E9B5C27 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -235,6 +255,7 @@
 				C1F451B21F67405E0033DAEF /* contest_guru_40@2x.png */,
 				C1F451B31F67405E0033DAEF /* contest_guru_60@2x.png */,
 				C1F451B41F67405E0033DAEF /* contest_guru_60@3x.png */,
+				C1DC0BC61F75D6FE0005014A /* contest_guru_1024.jpg */,
 			);
 			name = icons;
 			sourceTree = "<group>";
@@ -325,10 +346,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1F451A41F673DC00033DAEF /* Build configuration list for PBXNativeTarget "lily" */;
 			buildPhases = (
+				B40A4669D10A001D62A8B7F3 /* [CP] Check Pods Manifest.lock */,
 				C1F451781F673DC00033DAEF /* Sources */,
 				C1F451791F673DC00033DAEF /* Frameworks */,
 				C1F4517A1F673DC00033DAEF /* Resources */,
 				C1F451E41F6B1E230033DAEF /* Embed Frameworks */,
+				2F21271379869C5549152F56 /* [CP] Embed Pods Frameworks */,
+				708ABA48D9C631240ABF9CE1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -444,6 +468,7 @@
 				C1F452061F6F8F570033DAEF /* profile-icon@2x.png in Resources */,
 				C1F451BA1F67405E0033DAEF /* contest_guru_60@2x.png in Resources */,
 				C1F451B71F67405E0033DAEF /* contest_guru_29@2x.png in Resources */,
+				C1DC0BC71F75D6FE0005014A /* contest_guru_1024.jpg in Resources */,
 				C1F452091F6F8F570033DAEF /* public-icon@3x.png in Resources */,
 				C1F451FD1F6CD6AA0033DAEF /* public-icon.png in Resources */,
 				C1F452071F6F8F570033DAEF /* profile-icon@3x.png in Resources */,
@@ -465,6 +490,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2F21271379869C5549152F56 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-lily/Pods-lily-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-lily/Pods-lily-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		708ABA48D9C631240ABF9CE1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-lily/Pods-lily-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B40A4669D10A001D62A8B7F3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lily-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C1F451781F673DC00033DAEF /* Sources */ = {
@@ -648,13 +727,10 @@
 		};
 		C1F451A51F673DC00033DAEF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3697ADDDEF4FB8CF1CC450D6 /* Pods-lily.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3S86DJ63TR;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = lily/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathanchan.lily;
@@ -666,13 +742,10 @@
 		};
 		C1F451A61F673DC00033DAEF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55F87B504469E9E8CB0AC8F2 /* Pods-lily.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3S86DJ63TR;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = lily/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathanchan.lily;
