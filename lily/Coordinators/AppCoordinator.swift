@@ -47,7 +47,7 @@ class AppCoordinator: NSObject, TabBarCoordinator {
 
 extension AppCoordinator: UITabBarControllerDelegate {
     fileprivate func showLoginWebViewController() {
-        let url = URL(string: "http://localhost:8080/login")
+        let url = URL(string: "\(Globals.environment.rawValue)/login")
         if let url = url {
             if UIApplication.shared.canOpenURL(url) {
                 let wvc = LoginWebViewController(url: url)
