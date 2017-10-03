@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4C61A14D32DB9C652314F833 /* Pods_lily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BD7BC4EE3F103958EF222 /* Pods_lily.framework */; };
+		C138D1951F82B92200F5E19E /* LoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C138D1941F82B92200F5E19E /* LoginWebViewController.swift */; };
+		C138D1971F83FFB000F5E19E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C138D1961F83FFB000F5E19E /* UserManager.swift */; };
 		C1DC0BC71F75D6FE0005014A /* contest_guru_1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1DC0BC61F75D6FE0005014A /* contest_guru_1024.jpg */; };
 		C1F0CEA41F78546500DFE5AD /* ContestSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0CEA31F78546500DFE5AD /* ContestSectionController.swift */; };
 		C1F451801F673DC00033DAEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F4517F1F673DC00033DAEF /* AppDelegate.swift */; };
@@ -41,9 +43,6 @@
 		C1F451EC1F6B426B0033DAEF /* UIImageView+fromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451EB1F6B426B0033DAEF /* UIImageView+fromUrl.swift */; };
 		C1F451EF1F6CA50D0033DAEF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451EE1F6CA50D0033DAEF /* Globals.swift */; };
 		C1F451F11F6CA5390033DAEF /* UIColor+instagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451F01F6CA5390033DAEF /* UIColor+instagram.swift */; };
-		C1F451F31F6CAB0D0033DAEF /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451F21F6CAB0D0033DAEF /* LoginCoordinator.swift */; };
-		C1F451F51F6CAB510033DAEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451F41F6CAB510033DAEF /* LoginViewController.swift */; };
-		C1F451F71F6CABC60033DAEF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451F61F6CABC60033DAEF /* LoginViewModel.swift */; };
 		C1F451FD1F6CD6AA0033DAEF /* public-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F451FA1F6CD6AA0033DAEF /* public-icon.png */; };
 		C1F451FF1F6CDAE80033DAEF /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F451FE1F6CDAE80033DAEF /* AppCoordinator.swift */; };
 		C1F452051F6F8F570033DAEF /* profile-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F452001F6F8F570033DAEF /* profile-icon.png */; };
@@ -86,6 +85,8 @@
 /* Begin PBXFileReference section */
 		3697ADDDEF4FB8CF1CC450D6 /* Pods-lily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lily/Pods-lily.debug.xcconfig"; sourceTree = "<group>"; };
 		55F87B504469E9E8CB0AC8F2 /* Pods-lily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lily.release.xcconfig"; path = "Pods/Target Support Files/Pods-lily/Pods-lily.release.xcconfig"; sourceTree = "<group>"; };
+		C138D1941F82B92200F5E19E /* LoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginWebViewController.swift; path = Controllers/LoginWebViewController.swift; sourceTree = "<group>"; };
+		C138D1961F83FFB000F5E19E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Utils/UserManager.swift; sourceTree = "<group>"; };
 		C1DC0BC61F75D6FE0005014A /* contest_guru_1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = contest_guru_1024.jpg; path = Icons/contest_guru_1024.jpg; sourceTree = "<group>"; };
 		C1F0CEA31F78546500DFE5AD /* ContestSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContestSectionController.swift; path = "Section Controllers/ContestSectionController.swift"; sourceTree = "<group>"; };
 		C1F4517C1F673DC00033DAEF /* lily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lily.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,9 +126,6 @@
 		C1F451EB1F6B426B0033DAEF /* UIImageView+fromUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+fromUrl.swift"; path = "Extensions/UIImageView+fromUrl.swift"; sourceTree = "<group>"; };
 		C1F451EE1F6CA50D0033DAEF /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Globals.swift; path = Utils/Globals.swift; sourceTree = "<group>"; };
 		C1F451F01F6CA5390033DAEF /* UIColor+instagram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+instagram.swift"; path = "Extensions/UIColor+instagram.swift"; sourceTree = "<group>"; };
-		C1F451F21F6CAB0D0033DAEF /* LoginCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginCoordinator.swift; path = Coordinators/LoginCoordinator.swift; sourceTree = "<group>"; };
-		C1F451F41F6CAB510033DAEF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
-		C1F451F61F6CABC60033DAEF /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = ViewModels/LoginViewModel.swift; sourceTree = "<group>"; };
 		C1F451FA1F6CD6AA0033DAEF /* public-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "public-icon.png"; path = "Icons/public-icon.png"; sourceTree = "<group>"; };
 		C1F451FE1F6CDAE80033DAEF /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCoordinator.swift; path = Coordinators/AppCoordinator.swift; sourceTree = "<group>"; };
 		C1F452001F6F8F570033DAEF /* profile-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-icon.png"; path = "Icons/profile-icon.png"; sourceTree = "<group>"; };
@@ -277,7 +275,6 @@
 				C1F451CC1F69D20B0033DAEF /* Coordinator.swift */,
 				C1F451FE1F6CDAE80033DAEF /* AppCoordinator.swift */,
 				C1F451BD1F69A3170033DAEF /* MainCoordinator.swift */,
-				C1F451F21F6CAB0D0033DAEF /* LoginCoordinator.swift */,
 				C1F451CA1F69B0F90033DAEF /* ViewContestCoordinator.swift */,
 				C1F451C81F69B0EA0033DAEF /* CreateContestCoordinator.swift */,
 			);
@@ -289,7 +286,7 @@
 			children = (
 				C1F451D11F6A49A70033DAEF /* BaseViewModelViewController.swift */,
 				C1F451C01F69AFF40033DAEF /* MainViewController.swift */,
-				C1F451F41F6CAB510033DAEF /* LoginViewController.swift */,
+				C138D1941F82B92200F5E19E /* LoginWebViewController.swift */,
 				C1F451C41F69B0B10033DAEF /* CreateContestViewController.swift */,
 				C1F451C21F69B0A00033DAEF /* ContestViewController.swift */,
 				C1F451C61F69B0D80033DAEF /* ResultsViewController.swift */,
@@ -310,7 +307,6 @@
 			isa = PBXGroup;
 			children = (
 				C1F451D41F6AE29F0033DAEF /* MainViewModel.swift */,
-				C1F451F61F6CABC60033DAEF /* LoginViewModel.swift */,
 			);
 			name = viewmodels;
 			sourceTree = "<group>";
@@ -346,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				C1F451EE1F6CA50D0033DAEF /* Globals.swift */,
+				C138D1961F83FFB000F5E19E /* UserManager.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -564,7 +561,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1F451FF1F6CDAE80033DAEF /* AppCoordinator.swift in Sources */,
-				C1F451F71F6CABC60033DAEF /* LoginViewModel.swift in Sources */,
 				C1F451CF1F69D4C70033DAEF /* Contest.swift in Sources */,
 				C1F451BE1F69A3170033DAEF /* MainCoordinator.swift in Sources */,
 				C1F451DA1F6AE56A0033DAEF /* NodeDataProvider.swift in Sources */,
@@ -574,12 +570,12 @@
 				C1F451EF1F6CA50D0033DAEF /* Globals.swift in Sources */,
 				C1F451E01F6B1BAB0033DAEF /* Media.swift in Sources */,
 				C1F451E91F6B3AD90033DAEF /* ContestCollectionViewCell.swift in Sources */,
-				C1F451F31F6CAB0D0033DAEF /* LoginCoordinator.swift in Sources */,
-				C1F451F51F6CAB510033DAEF /* LoginViewController.swift in Sources */,
+				C138D1951F82B92200F5E19E /* LoginWebViewController.swift in Sources */,
 				C1F451DE1F6AF7220033DAEF /* TestInstagramDataProvider.swift in Sources */,
 				C1F0CEA41F78546500DFE5AD /* ContestSectionController.swift in Sources */,
 				C1F451C91F69B0EA0033DAEF /* CreateContestCoordinator.swift in Sources */,
 				C1F451801F673DC00033DAEF /* AppDelegate.swift in Sources */,
+				C138D1971F83FFB000F5E19E /* UserManager.swift in Sources */,
 				C1F451C11F69AFF40033DAEF /* MainViewController.swift in Sources */,
 				C1F451EC1F6B426B0033DAEF /* UIImageView+fromUrl.swift in Sources */,
 				C1F451CB1F69B0F90033DAEF /* ViewContestCoordinator.swift in Sources */,

@@ -18,15 +18,10 @@ class MainCoordinator: NSObject, NavigationCoordinator {
     
     weak var delegate: MainCoordinatorDelegate?
     
-    fileprivate var isLoggedIn = false
+    fileprivate var isLoggedIn = UserManager.shared.token != nil
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-    }
-    
-    convenience init(navigationController: UINavigationController, isLoggedIn: Bool = false) {
-        self.init(navigationController: navigationController)
-        self.isLoggedIn = isLoggedIn
     }
     
     func start() {

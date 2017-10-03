@@ -14,28 +14,20 @@ class AppCoordinator: NSObject, TabBarCoordinator {
     let publicTabNavigationController = UINavigationController()
     let profileTabNavigationController = UINavigationController()
     
-    fileprivate var isLoggedIn = false
-    
     required init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
     }
     
     func start() {
+        tabBarController.delegate = self
         showLoggedInTabBarController()
     }
     
-    fileprivate func initAndStartMainCoordinator(navigationController: UINavigationController, isLoggedIn: Bool = false) {
-        let mainCoordinator = MainCoordinator(navigationController: navigationController, isLoggedIn: isLoggedIn)
+    fileprivate func initAndStartMainCoordinator(navigationController: UINavigationController) {
+        let mainCoordinator = MainCoordinator(navigationController: navigationController)
         mainCoordinator.delegate = self
         mainCoordinator.start()
         self.addChildCoordinator(mainCoordinator)
-    }
-    
-    fileprivate func initAndStartLoginCoordinator(navigationController: UINavigationController) {
-        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
-        loginCoordinator.delegate = self
-        loginCoordinator.start()
-        self.addChildCoordinator(loginCoordinator)
     }
     
     fileprivate func showLoggedInTabBarController() {
@@ -49,31 +41,67 @@ class AppCoordinator: NSObject, TabBarCoordinator {
         
         initAndStartMainCoordinator(navigationController: publicTabNavigationController)
         
-        initAndStartLoginCoordinator(navigationController: profileTabNavigationController)
-        
         tabBarController.viewControllers = [publicTabNavigationController, profileTabNavigationController]
     }
 }
 
-extension AppCoordinator: LoginCoordinatorDelegate {
-    func loginCoordinatorDelegateDidLogin(_ loginCoordinator: LoginCoordinator) {
-        self.isLoggedIn = true
+extension AppCoordinator: UITabBarControllerDelegate {
+    fileprivate func showLoginWebViewController() {
+        let url = URL(string: "http://localhost:8080/login")
+        if let url = url {
+            if UIApplication.shared.canOpenURL(url) {
+                let wvc = LoginWebViewController(url: url)
+                wvc.delegate = self
+                wvc.modalPresentationStyle = .overFullScreen
+                self.tabBarController.present(wvc, animated: true, completion: nil)
+            } else {
+                let alertController = UIAlertController(title: "Error", message: "URL is invalid. Maybe it's missing http:// ?", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alertController.addAction(okAction)
+                self.tabBarController.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if UserManager.shared.token == nil,
+            viewController == tabBarController.viewControllers?[1] {
+            // user is not logged in and Profile tab is selected
+            showLoginWebViewController()
+            return false
+        }
+        return true
+    }
+}
+
+extension AppCoordinator: LoginWebViewControllerDelegate {
+    func loginWebViewControllerDelegateDidCancel(_ loginWebViewController: LoginWebViewController) {
+        self.tabBarController.dismiss(animated: true, completion: nil)
+    }
+    
+    func loginWebViewControllerDelegateDidLogin(token: String) {
+        UserManager.shared.token = token
+        self.tabBarController.dismiss(animated: true, completion: nil)
         
         profileTabNavigationController.viewControllers = []
-        self.removeChildCoordinator(loginCoordinator)
         
-        initAndStartMainCoordinator(navigationController: profileTabNavigationController, isLoggedIn: isLoggedIn)
+        initAndStartMainCoordinator(navigationController: profileTabNavigationController)
+        
+        tabBarController.selectedIndex = 1
     }
 }
 
 extension AppCoordinator: MainCoordinatorDelegate {
     func mainCoordinateDelegateDidLogout(_ mainCoordinator: MainCoordinator) {
-        self.isLoggedIn = false
+        
+        UserManager.shared.token = nil
+        let storage = HTTPCookieStorage.shared
+        for cookie in storage.cookies! {
+            storage.deleteCookie(cookie)
+        }
         
         profileTabNavigationController.viewControllers = []
         self.removeChildCoordinator(mainCoordinator)
-        
-        initAndStartLoginCoordinator(navigationController: profileTabNavigationController)
         
         tabBarController.selectedIndex = 0
     }
