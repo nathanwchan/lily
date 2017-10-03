@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum PageType {
+    case `public`
+    case profile
+}
+
 class AppCoordinator: NSObject, TabBarCoordinator {
     var tabBarController: UITabBarController
     var childCoordinators: [Coordinator] = []
@@ -23,8 +28,8 @@ class AppCoordinator: NSObject, TabBarCoordinator {
         showLoggedInTabBarController()
     }
     
-    fileprivate func initAndStartMainCoordinator(navigationController: UINavigationController) {
-        let mainCoordinator = MainCoordinator(navigationController: navigationController)
+    fileprivate func initAndStartMainCoordinator(navigationController: UINavigationController, pageType: PageType) {
+        let mainCoordinator = MainCoordinator(navigationController: navigationController, pageType: pageType)
         mainCoordinator.delegate = self
         mainCoordinator.start()
         self.addChildCoordinator(mainCoordinator)
@@ -39,7 +44,7 @@ class AppCoordinator: NSObject, TabBarCoordinator {
         let profileTabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile-icon.png"), tag: 1)
         profileTabNavigationController.tabBarItem = profileTabBarItem
         
-        initAndStartMainCoordinator(navigationController: publicTabNavigationController)
+        initAndStartMainCoordinator(navigationController: publicTabNavigationController, pageType: .public)
         
         tabBarController.viewControllers = [publicTabNavigationController, profileTabNavigationController]
     }
@@ -85,7 +90,7 @@ extension AppCoordinator: LoginWebViewControllerDelegate {
         
         profileTabNavigationController.viewControllers = []
         
-        initAndStartMainCoordinator(navigationController: profileTabNavigationController)
+        initAndStartMainCoordinator(navigationController: profileTabNavigationController, pageType: .profile)
         
         tabBarController.selectedIndex = 1
     }

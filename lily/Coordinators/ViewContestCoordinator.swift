@@ -11,18 +11,18 @@ import SafariServices
 
 class ViewContestCoordinator: NavigationCoordinator {
     var navigationController: UINavigationController
-    var contest: Contest?
-    var isLoggedIn: Bool?
+    var contest: Contest!
+    var pageType: PageType!
     var childCoordinators: [Coordinator] = []
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
-    convenience init(navigationController: UINavigationController, contest: Contest, isLoggedIn: Bool = false) {
+    convenience init(navigationController: UINavigationController, contest: Contest, pageType: PageType) {
         self.init(navigationController: navigationController)
         self.contest = contest
-        self.isLoggedIn = isLoggedIn
+        self.pageType = pageType
     }
     
     func start() {
@@ -30,10 +30,11 @@ class ViewContestCoordinator: NavigationCoordinator {
     }
     
     fileprivate func showContestViewController() {
-        let contestViewController = ContestViewController()
+        guard let contest = contest else {
+            return
+        }
+        let contestViewController = ContestViewController(contest: contest, pageType: pageType)
         contestViewController.delegate = self
-        contestViewController.contest = contest
-        contestViewController.isLoggedIn = isLoggedIn
         self.navigationController.pushViewController(contestViewController, animated: true)
     }
     

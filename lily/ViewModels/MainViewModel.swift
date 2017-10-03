@@ -15,7 +15,7 @@ protocol MainViewModelDelegate: class {
 }
 
 class MainViewModel {
-    var isLoggedIn: Bool!
+    var pageType: PageType
     private(set) var contests: [Contest] = []
     private(set) var media: [Media] = []
     let dataProvider: DataProvider!
@@ -23,9 +23,9 @@ class MainViewModel {
     // used by AppCoordinator
     weak var delegate: MainViewModelDelegate?
     
-    init(dataProvider: DataProvider = TestInstagramDataProvider(), isLoggedIn: Bool = false) {
+    init(dataProvider: DataProvider = TestInstagramDataProvider(), pageType: PageType) {
         self.dataProvider = dataProvider
-        self.isLoggedIn = isLoggedIn
+        self.pageType = pageType
     }
     
     //MARK: - Events

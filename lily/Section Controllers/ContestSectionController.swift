@@ -15,14 +15,14 @@ protocol ContestSectionControllerDelegate: class {
 
 class ContestSectionController: ListSectionController {
     var contest: Contest!
-    var isLoggedIn: Bool!
+    var showCTA: Bool!
     
     weak var delegate: ContestSectionControllerDelegate?
     
-    init(isLoggedIn: Bool) {
+    init(showCTA: Bool) {
         super.init()
         
-        self.isLoggedIn = isLoggedIn
+        self.showCTA = showCTA
         self.inset = .init(top: 0, left: 0, bottom: 1, right: 1)
     }
     
@@ -33,7 +33,7 @@ class ContestSectionController: ListSectionController {
     override func sizeForItem(at index: Int) -> CGSize {
         let width = (collectionContext!.containerSize.width - 2) / 3
         var height = width
-        if isLoggedIn {
+        if showCTA {
             height += ContestCollectionViewCell.buttonHeight
         }
         return CGSize(width: width, height: height)
@@ -41,7 +41,7 @@ class ContestSectionController: ListSectionController {
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         let cell = collectionContext!.dequeueReusableCell(of: ContestCollectionViewCell.self, for: self, at: index) as! ContestCollectionViewCell
-        cell.configureWith(contest, showLabel: isLoggedIn)
+        cell.configureWith(contest, showCTA: showCTA)
         return cell
     }
     

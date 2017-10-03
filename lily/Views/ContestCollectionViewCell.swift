@@ -46,7 +46,7 @@ class ContestCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    func configureWith(_ contest: Contest, showLabel: Bool = false) {
+    func configureWith(_ contest: Contest, showCTA: Bool = false) {
         for subview in stackView.arrangedSubviews {
             stackView.removeArrangedSubview(subview)
             subview.removeFromSuperview()
@@ -56,7 +56,7 @@ class ContestCollectionViewCell: UICollectionViewCell {
         
         stackView.addArrangedSubview(imageView)
         
-        if showLabel {
+        if showCTA {
             let label = UILabel()
             switch contest.state {
             case .Inactive:

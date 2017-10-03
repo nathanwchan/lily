@@ -18,8 +18,18 @@ class ContestViewController: UIViewController {
 
     weak var delegate: ContestViewControllerDelegate?
     
-    var contest: Contest?
-    var isLoggedIn: Bool?
+    var contest: Contest
+    var pageType: PageType
+    
+    required init(contest: Contest, pageType: PageType) {
+        self.contest = contest
+        self.pageType = pageType
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,18 +38,15 @@ class ContestViewController: UIViewController {
         view.clipsToBounds = true
         self.automaticallyAdjustsScrollViewInsets = false
         
-        guard let contest = contest else {
-            fatalError("No contest!")
-        }
-        
-        if let isLoggedIn = isLoggedIn, isLoggedIn {
+        switch pageType {
+        case .public:
+            self.navigationItem.title = "Contest"
+        case .profile:
             if contest.state == .Inactive {
                 self.navigationItem.title = contest.media.type.capitalized
             } else {
                 self.navigationItem.title = contest.name
             }
-        } else {
-            self.navigationItem.title = "Contest"
         }
         
         let scrollView = UIScrollView(frame: .zero)
@@ -80,7 +87,7 @@ class ContestViewController: UIViewController {
         detailStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: spacing).isActive = true
         detailStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -spacing).isActive = true
         
-        if let isLoggedIn = isLoggedIn, isLoggedIn {
+        if pageType == .profile {
             let actionButton = UIButton(frame: .zero)
             actionButton.center = view.center
             switch contest.state {
@@ -129,9 +136,6 @@ class ContestViewController: UIViewController {
     }
     
     @objc func actionButtonClicked(sender: Any?) {
-        guard let contest = contest else {
-            return
-        }
         switch contest.state {
         case .Inactive:
             self.delegate?.contestViewController(self, didClickCreateContest: contest)
@@ -143,9 +147,6 @@ class ContestViewController: UIViewController {
     }
     
     @objc func viewOnIGButtonClicked(sender: Any?) {
-        guard let contest = contest else {
-            return
-        }
         self.delegate?.contestViewController(self, didClickViewOnIG: contest)
     }
 }

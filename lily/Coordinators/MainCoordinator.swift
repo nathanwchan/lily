@@ -18,10 +18,15 @@ class MainCoordinator: NSObject, NavigationCoordinator {
     
     weak var delegate: MainCoordinatorDelegate?
     
-    fileprivate var isLoggedIn = UserManager.shared.token != nil
+    var pageType: PageType!
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+    }
+    
+    convenience init(navigationController: UINavigationController, pageType: PageType) {
+        self.init(navigationController: navigationController)
+        self.pageType = pageType
     }
     
     func start() {
@@ -31,7 +36,7 @@ class MainCoordinator: NSObject, NavigationCoordinator {
     }
     
     private func initMainViewController() -> MainViewController {
-        let mainViewModel = MainViewModel(isLoggedIn: isLoggedIn)
+        let mainViewModel = MainViewModel(pageType: pageType)
         let mainViewController = MainViewController(viewModel: mainViewModel)
         mainViewModel.delegate = self
         return mainViewController
@@ -48,14 +53,14 @@ extension MainCoordinator: MainViewModelDelegate {
     }
     
     func mainView(_ mainViewModel: MainViewModel, didSelectContest contest: Contest) {
-        let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest, isLoggedIn: isLoggedIn)
+        let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest, pageType: pageType)
         viewContestCoordinator.start()
         self.addChildCoordinator(viewContestCoordinator)
     }
     
     func mainView(_ mainViewModel: MainViewModel, didSelectMedia media: Media){
         let contest = Contest(name: "Contest Name", media: media)
-        let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest)
+        let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest, pageType: pageType)
         viewContestCoordinator.start()
         self.addChildCoordinator(viewContestCoordinator)
     }

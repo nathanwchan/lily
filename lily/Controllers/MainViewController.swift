@@ -31,12 +31,13 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, ListAdapte
         view.backgroundColor = .white
         self.automaticallyAdjustsScrollViewInsets = false
         
-        if viewModel.isLoggedIn {
+        switch viewModel.pageType {
+        case .public:
+            self.navigationItem.title = "contest.guru"
+        case .profile:
             self.navigationItem.title = "My Profile"
             let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(self.logoutButtonClicked))
             self.navigationItem.rightBarButtonItem = logoutBarButtonItem
-        } else {
-            self.navigationItem.title = "contest.guru"
         }
         
         let contestsCollectionViewLayout = ListCollectionViewLayout(stickyHeaders: false, scrollDirection: .vertical, topContentInset: 0, stretchToEdge: true)
@@ -55,10 +56,11 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, ListAdapte
         contestsCollectionView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
         contestsCollectionView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
         
-        if viewModel.isLoggedIn {
-            viewModel.getContestsForUser()
-        } else {
+        switch viewModel.pageType {
+        case .public:
             viewModel.getPublicContests()
+        case .profile:
+            viewModel.getContestsForUser()
         }
     }
     
@@ -92,17 +94,18 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, ListAdapte
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        let sectionController = ContestSectionController(isLoggedIn: viewModel.isLoggedIn)
+        let sectionController = ContestSectionController(showCTA: viewModel.pageType == .profile)
         sectionController.delegate = self
         return sectionController
     }
     
     func listAdapter(_ listAdapter: ListAdapter, willDisplay object: Any, at index: Int) {
         if index == viewModel.contests.count - 1 {
-            if viewModel.isLoggedIn {
-                viewModel.getMoreContestsForUser()
-            } else {
+            switch viewModel.pageType {
+            case .public:
                 viewModel.getMorePublicContests()
+            case .profile:
+                viewModel.getMoreContestsForUser()
             }
         }
     }
