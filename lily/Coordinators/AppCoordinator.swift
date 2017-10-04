@@ -18,6 +18,7 @@ class AppCoordinator: NSObject, TabBarCoordinator {
     var childCoordinators: [Coordinator] = []
     let publicTabNavigationController = UINavigationController()
     let profileTabNavigationController = UINavigationController()
+    var checkedIfUserAlreadyLoggedIn = false
     
     required init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
@@ -25,7 +26,7 @@ class AppCoordinator: NSObject, TabBarCoordinator {
     
     func start() {
         tabBarController.delegate = self
-        showLoggedInTabBarController()
+        initTabBarController()
     }
     
     fileprivate func initAndStartMainCoordinator(navigationController: UINavigationController, pageType: PageType) {
@@ -35,7 +36,7 @@ class AppCoordinator: NSObject, TabBarCoordinator {
         self.addChildCoordinator(mainCoordinator)
     }
     
-    fileprivate func showLoggedInTabBarController() {
+    fileprivate func initTabBarController() {
         self.tabBarController.automaticallyAdjustsScrollViewInsets = false
         
         let publicTabBarItem = UITabBarItem(title: "Public", image: UIImage(named: "public-icon.png"), tag: 0)
@@ -74,6 +75,9 @@ extension AppCoordinator: UITabBarControllerDelegate {
             // user is not logged in and Profile tab is selected
             showLoginWebViewController()
             return false
+        } else if !checkedIfUserAlreadyLoggedIn {
+            checkedIfUserAlreadyLoggedIn = true
+            initAndStartMainCoordinator(navigationController: profileTabNavigationController, pageType: .profile)
         }
         return true
     }
@@ -85,7 +89,7 @@ extension AppCoordinator: LoginWebViewControllerDelegate {
     }
     
     func loginWebViewControllerDelegateDidLogin(token: String) {
-        UserManager.shared.token = token
+        UserManager.shared.save(token)
         self.tabBarController.dismiss(animated: true, completion: nil)
         
         profileTabNavigationController.viewControllers = []
@@ -99,7 +103,7 @@ extension AppCoordinator: LoginWebViewControllerDelegate {
 extension AppCoordinator: MainCoordinatorDelegate {
     func mainCoordinateDelegateDidLogout(_ mainCoordinator: MainCoordinator) {
         
-        UserManager.shared.token = nil
+        UserManager.shared.clearToken()
         let storage = HTTPCookieStorage.shared
         for cookie in storage.cookies! {
             storage.deleteCookie(cookie)

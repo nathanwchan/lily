@@ -10,7 +10,22 @@ import Foundation
 
 final class UserManager {
     static let shared = UserManager()
-    private init() {}
+    let defaults = UserDefaults.standard
     
-    var token: String?
+    private init() {
+        if let token = defaults.string(forKey: Globals.userDefaultsTokenKey) {
+            self.token = token
+        }
+        
+    }
+    private(set) var token: String?
+    
+    func save(_ token: String) {
+        defaults.set(token, forKey: Globals.userDefaultsTokenKey)
+        self.token = token
+    }
+    
+    func clearToken() {
+        self.token = nil
+    }
 }

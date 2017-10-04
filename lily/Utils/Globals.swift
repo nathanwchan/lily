@@ -10,6 +10,7 @@ import UIKit
 
 enum Globals {
     static let environment = Environments.Localhost
+    static let userDefaultsTokenKey = "userToken"
 }
 
 enum Environments: String {
