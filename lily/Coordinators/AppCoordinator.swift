@@ -101,7 +101,7 @@ extension AppCoordinator: LoginWebViewControllerDelegate {
 }
 
 extension AppCoordinator: MainCoordinatorDelegate {
-    func mainCoordinateDelegateDidLogout(_ mainCoordinator: MainCoordinator) {
+    func mainCoordinatorDelegateDidLogout(_ mainCoordinator: MainCoordinator) {
         
         UserManager.shared.clearToken()
         let storage = HTTPCookieStorage.shared

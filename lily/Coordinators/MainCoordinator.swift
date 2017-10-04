@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MainCoordinatorDelegate: class {
-    func mainCoordinateDelegateDidLogout(_ mainCoordinator: MainCoordinator)
+    func mainCoordinatorDelegateDidLogout(_ mainCoordinator: MainCoordinator)
 }
 
 class MainCoordinator: NSObject, NavigationCoordinator {
@@ -49,7 +49,7 @@ class MainCoordinator: NSObject, NavigationCoordinator {
 
 extension MainCoordinator: MainViewModelDelegate {
     func mainViewDidClickLogout(_ mainViewModel: MainViewModel) {
-        self.delegate?.mainCoordinateDelegateDidLogout(self)
+        self.delegate?.mainCoordinatorDelegateDidLogout(self)
     }
     
     func mainView(_ mainViewModel: MainViewModel, didSelectContest contest: Contest) {
