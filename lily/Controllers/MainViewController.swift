@@ -21,6 +21,7 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, ListAdapte
     }()
     
     private var contestsCollectionView: UICollectionView!
+    private var loadingSpinner: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +56,15 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, ListAdapte
         contestsCollectionView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
         contestsCollectionView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
         
+        loadingSpinner.center = view.center
+        loadingSpinner.hidesWhenStopped = true
+        loadingSpinner.activityIndicatorViewStyle = .whiteLarge
+        loadingSpinner.color = .instagramBlue
+        
+        view.addSubview(loadingSpinner)
+        
+        loadingSpinner.startAnimating()
+        
         switch viewModel.pageType {
         case .public:
             viewModel.getPublicContests()
@@ -71,6 +81,7 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, ListAdapte
     
     private func viewModelDidGetContests() {
         DispatchQueue.main.async {
+            self.loadingSpinner.stopAnimating()
             self.adapter.performUpdates(animated: true)
         }
     }

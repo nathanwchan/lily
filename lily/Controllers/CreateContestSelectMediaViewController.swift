@@ -16,6 +16,7 @@ class CreateContestSelectMediaViewController: BaseViewModelViewController<Create
     }()
     
     private var mediaCollectionView: UICollectionView!
+    private var loadingSpinner: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,15 @@ class CreateContestSelectMediaViewController: BaseViewModelViewController<Create
         mediaCollectionView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
         mediaCollectionView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
         
+        loadingSpinner.center = view.center
+        loadingSpinner.hidesWhenStopped = true
+        loadingSpinner.activityIndicatorViewStyle = .whiteLarge
+        loadingSpinner.color = .instagramBlue
+        
+        view.addSubview(loadingSpinner)
+        
+        loadingSpinner.startAnimating()
+        
         viewModel.getMediaForUser()
     }
     
@@ -56,8 +66,9 @@ class CreateContestSelectMediaViewController: BaseViewModelViewController<Create
     }
     
     private func viewModelDidGetMediaForUser() {
-        // TODO: if 0, show special view
+        // TODO: if 0 in viewModel.media, show special view
         DispatchQueue.main.async {
+            self.loadingSpinner.stopAnimating()
             self.adapter.performUpdates(animated: true)
         }
     }
