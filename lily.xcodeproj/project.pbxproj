@@ -11,6 +11,9 @@
 		C138D1951F82B92200F5E19E /* LoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C138D1941F82B92200F5E19E /* LoginWebViewController.swift */; };
 		C138D1971F83FFB000F5E19E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C138D1961F83FFB000F5E19E /* UserManager.swift */; };
 		C1C3F1F41F8FDABD000B0399 /* contest_guru_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C3F1F31F8FDABD000B0399 /* contest_guru_1024.png */; };
+		C1C3F1F61F8FDEB2000B0399 /* IGListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3F1F51F8FDEB2000B0399 /* IGListItem.swift */; };
+		C1C3F1F81F8FDFE3000B0399 /* IGListItemSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3F1F71F8FDFE3000B0399 /* IGListItemSectionController.swift */; };
+		C1C3F1FA1F8FE0C3000B0399 /* IGListItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3F1F91F8FE0C3000B0399 /* IGListItemCollectionViewCell.swift */; };
 		C1CB07B61F848D3D006121BD /* contest_guru_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CB07AE1F848D3D006121BD /* contest_guru_60@3x.png */; };
 		C1CB07B71F848D3D006121BD /* contest_guru_20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CB07AF1F848D3D006121BD /* contest_guru_20@2x.png */; };
 		C1CB07B81F848D3D006121BD /* contest_guru_20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CB07B01F848D3D006121BD /* contest_guru_20@3x.png */; };
@@ -88,6 +91,9 @@
 		C138D1941F82B92200F5E19E /* LoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginWebViewController.swift; path = Controllers/LoginWebViewController.swift; sourceTree = "<group>"; };
 		C138D1961F83FFB000F5E19E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Utils/UserManager.swift; sourceTree = "<group>"; };
 		C1C3F1F31F8FDABD000B0399 /* contest_guru_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = contest_guru_1024.png; path = Icons/contest_guru_1024.png; sourceTree = "<group>"; };
+		C1C3F1F51F8FDEB2000B0399 /* IGListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IGListItem.swift; path = Models/IGListItem.swift; sourceTree = "<group>"; };
+		C1C3F1F71F8FDFE3000B0399 /* IGListItemSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IGListItemSectionController.swift; path = "Section Controllers/IGListItemSectionController.swift"; sourceTree = "<group>"; };
+		C1C3F1F91F8FE0C3000B0399 /* IGListItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IGListItemCollectionViewCell.swift; path = Views/IGListItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		C1CB07AE1F848D3D006121BD /* contest_guru_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contest_guru_60@3x.png"; path = "Icons/contest_guru_60@3x.png"; sourceTree = "<group>"; };
 		C1CB07AF1F848D3D006121BD /* contest_guru_20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contest_guru_20@2x.png"; path = "Icons/contest_guru_20@2x.png"; sourceTree = "<group>"; };
 		C1CB07B01F848D3D006121BD /* contest_guru_20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contest_guru_20@3x.png"; path = "Icons/contest_guru_20@3x.png"; sourceTree = "<group>"; };
@@ -183,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				C1F0CEA31F78546500DFE5AD /* ContestSectionController.swift */,
+				C1C3F1F71F8FDFE3000B0399 /* IGListItemSectionController.swift */,
 			);
 			name = sectioncontrollers;
 			sourceTree = "<group>";
@@ -299,6 +306,7 @@
 			children = (
 				C1F451CE1F69D4C70033DAEF /* Contest.swift */,
 				C1F451DF1F6B1BAB0033DAEF /* Media.swift */,
+				C1C3F1F51F8FDEB2000B0399 /* IGListItem.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -325,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				C1F451E81F6B3AD90033DAEF /* ContestCollectionViewCell.swift */,
+				C1C3F1F91F8FE0C3000B0399 /* IGListItemCollectionViewCell.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -565,12 +574,15 @@
 				C1F451BE1F69A3170033DAEF /* MainCoordinator.swift in Sources */,
 				C1F451DA1F6AE56A0033DAEF /* NodeDataProvider.swift in Sources */,
 				C1F451D21F6A49A70033DAEF /* BaseViewModelViewController.swift in Sources */,
+				C1C3F1FA1F8FE0C3000B0399 /* IGListItemCollectionViewCell.swift in Sources */,
 				C1F451C51F69B0B10033DAEF /* CreateContestViewController.swift in Sources */,
+				C1C3F1F81F8FDFE3000B0399 /* IGListItemSectionController.swift in Sources */,
 				C1F451C31F69B0A00033DAEF /* ContestViewController.swift in Sources */,
 				C1F451EF1F6CA50D0033DAEF /* Globals.swift in Sources */,
 				C1F451E01F6B1BAB0033DAEF /* Media.swift in Sources */,
 				C1F451E91F6B3AD90033DAEF /* ContestCollectionViewCell.swift in Sources */,
 				C138D1951F82B92200F5E19E /* LoginWebViewController.swift in Sources */,
+				C1C3F1F61F8FDEB2000B0399 /* IGListItem.swift in Sources */,
 				C1F451DE1F6AF7220033DAEF /* TestInstagramDataProvider.swift in Sources */,
 				C1F0CEA41F78546500DFE5AD /* ContestSectionController.swift in Sources */,
 				C1F451C91F69B0EA0033DAEF /* CreateContestCoordinator.swift in Sources */,

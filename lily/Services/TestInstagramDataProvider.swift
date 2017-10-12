@@ -36,7 +36,7 @@ class TestInstagramDataProvider: DataProvider {
             }
             
             let mediaList = items.flatMap { Media.decode(json: $0) }
-            let contests = mediaList.flatMap { Contest(name: "Contest \(arc4random_uniform(100))", media: $0, state: State(rawValue: Int(arc4random_uniform(3)))!) }
+            let contests = mediaList.flatMap { Contest(name: "Contest \(arc4random_uniform(100))", media: $0, state: State(rawValue: Int(arc4random_uniform(2) + 1))!) }
             completion(contests)
         }
     }

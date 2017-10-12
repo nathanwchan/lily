@@ -35,11 +35,6 @@ class ContestCollectionViewCell: UICollectionViewCell {
         stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         stackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        
-        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: contentView.bounds.width, height: contentView.bounds.height))
-        imageView.contentMode = .scaleAspectFill
-        
-        stackView.addArrangedSubview(imageView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -52,6 +47,8 @@ class ContestCollectionViewCell: UICollectionViewCell {
             subview.removeFromSuperview()
         }
         
+        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: contentView.bounds.width, height: contentView.bounds.height))
+        imageView.contentMode = .scaleAspectFill
         imageView.image(fromUrl: contest.media.imageUrl)
         
         stackView.addArrangedSubview(imageView)

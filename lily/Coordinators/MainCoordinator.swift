@@ -52,6 +52,13 @@ extension MainCoordinator: MainViewModelDelegate {
         self.delegate?.mainCoordinatorDelegateDidLogout(self)
     }
     
+    func mainViewDidClickCreateNewContest(_ mainViewModel: MainViewModel) {
+        let createContestCoordinator = CreateContestCoordinator(navigationController: navigationController)
+        createContestCoordinator.delegate = self
+        createContestCoordinator.start()
+        self.addChildCoordinator(createContestCoordinator)
+    }
+    
     func mainView(_ mainViewModel: MainViewModel, didSelectContest contest: Contest) {
         let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest, pageType: pageType)
         viewContestCoordinator.start()
@@ -63,6 +70,18 @@ extension MainCoordinator: MainViewModelDelegate {
         let viewContestCoordinator = ViewContestCoordinator(navigationController: navigationController, contest: contest, pageType: pageType)
         viewContestCoordinator.start()
         self.addChildCoordinator(viewContestCoordinator)
+    }
+}
+
+extension MainCoordinator: CreateContestCoordinatorDelegate {
+    func createContestCoordinatorDelegateDidCancel(_ createContestCoordinator: CreateContestCoordinator) {
+        createContestCoordinator.navigationController.popToRootViewController(animated: true)
+        self.removeChildCoordinator(createContestCoordinator)
+    }
+    
+    func createContestCoordinator(_ createContestCoordinator: CreateContestCoordinator, didCreateContest contest: Contest) {
+        createContestCoordinator.navigationController.popToRootViewController(animated: true)
+        self.removeChildCoordinator(createContestCoordinator)
     }
 }
 

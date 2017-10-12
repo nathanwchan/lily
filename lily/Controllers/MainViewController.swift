@@ -14,7 +14,7 @@ protocol MainViewControllerDelegate: class {
     func mainViewController(_ mainViewController: MainViewController, didSelectContest contest: Contest)
 }
 
-class MainViewController: BaseViewModelViewController<MainViewModel>, ListAdapterDataSource, IGListAdapterDelegate, ContestSectionControllerDelegate {
+class MainViewController: BaseViewModelViewController<MainViewModel>, ListAdapterDataSource, IGListAdapterDelegate, ContestSectionControllerDelegate, IGListItemSectionControllerDelegate {
     
     lazy var adapter: ListAdapter = {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 0)
@@ -90,13 +90,23 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, ListAdapte
     // MARK: IGListKit delegate methods
     
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return viewModel.contests
+        var items: [ListDiffable] = viewModel.contests
+        if viewModel.pageType == .profile {
+            items = [IGListItem(symbol: "+", text: "New") as ListDiffable] + items
+        }
+        return items
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        let sectionController = ContestSectionController(showCTA: viewModel.pageType == .profile)
-        sectionController.delegate = self
-        return sectionController
+        if let _ = object as? IGListItem {
+            let sectionController = IGListItemSectionController()
+            sectionController.delegate = self
+            return sectionController
+        } else {
+            let sectionController = ContestSectionController(showCTA: viewModel.pageType == .profile)
+            sectionController.delegate = self
+            return sectionController
+        }
     }
     
     func listAdapter(_ listAdapter: ListAdapter, willDisplay object: Any, at index: Int) {
@@ -120,6 +130,12 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, ListAdapte
     
     func contestSectionController(_ contestSectionController: ContestSectionController, didSelectContest contest: Contest) {
         viewModel.didSelectContest(contest)
+    }
+    
+    // MARK: IGListItemSectionController delegate methods
+    
+    func iGListItemSectionController(_ iGListItemSectionController: IGListItemSectionController, didSelectIGListItem iGListItem: IGListItem) {
+        viewModel.didClickCreateNewContest()
     }
 }
 
