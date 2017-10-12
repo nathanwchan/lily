@@ -96,7 +96,7 @@ class ContestViewController: UIViewController {
                 actionButton.setTitleColor(.white, for: .normal)
                 actionButton.backgroundColor = .instagramBlue
             case .InProgress:
-                actionButton.setTitle("Contest currently in progress!", for: .normal)
+                actionButton.setTitle("Contest In Progress: \(arc4random_uniform(12) + 2) days left", for: .normal)
                 actionButton.setTitleColor(.black, for: .normal)
                 actionButton.backgroundColor = .white
             case .Complete:
