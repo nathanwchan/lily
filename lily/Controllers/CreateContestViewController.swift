@@ -8,14 +8,7 @@
 
 import UIKit
 
-protocol CreateContestViewControllerDelegate: class {
-    func createContestViewControllerDidTapCancel(_ createContestViewController: CreateContestViewController)
-    func createContestViewController(_ createContestViewController: CreateContestViewController, didCreateContest contest: Contest)
-}
-
-class CreateContestViewController: UIViewController {
-    
-    weak var delegate: CreateContestViewControllerDelegate?
+class CreateContestViewController: BaseViewModelViewController<CreateContestViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +49,10 @@ class CreateContestViewController: UIViewController {
     }
 
     @objc func cancelButtonTapped(sender: UIBarButtonItem) {
-        self.delegate?.createContestViewControllerDidTapCancel(self)
+        viewModel.didClickCancel()
     }
 
     @objc func createContestButtonClicked(sender: Any?) {
-        self.delegate?.createContestViewController(self, didCreateContest: Contest(name: "createContest", media: testMedia))
+        viewModel.didClickCreateNewContest()
     }
 }

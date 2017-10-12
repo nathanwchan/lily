@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import IGListKit
 
-struct Media {
+class Media: ListDiffable {
     var id: String
     var code: String
     var userId: String
@@ -64,6 +65,16 @@ struct Media {
         guard let link = dict["link"] as? String else { return nil }
         
         return Media(id: id, code: code, userId: userId, username: username, imageUrl: imageUrl, createdTime: createdTime, caption: caption, type: type, link: link)
+    }
+    
+    func diffIdentifier() -> NSObjectProtocol {
+        return self.id as NSObjectProtocol
+    }
+    
+    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+        guard self !== object else { return true }
+        guard let object = object as? Media else { return false }
+        return id == object.id
     }
 }
 

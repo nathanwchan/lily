@@ -18,28 +18,41 @@ class CreateContestCoordinator: NavigationCoordinator {
     var childCoordinators: [Coordinator] = []
     
     weak var delegate: CreateContestCoordinatorDelegate?
+    var createContestViewModel: CreateContestViewModel
     
     required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        createContestViewModel = CreateContestViewModel()
     }
     
     func start() {
-        self.showCreateContestViewController()
+        showCreateContestSelectMediaViewController()
     }
     
-    private func showCreateContestViewController() {
-        let createContestViewController = CreateContestViewController()
-        createContestViewController.delegate = self
+    private func showCreateContestSelectMediaViewController() {
+        let createContestSelectMediaViewController = CreateContestSelectMediaViewController(viewModel: createContestViewModel)
+        createContestViewModel.delegate = self
+        self.navigationController.pushViewController(createContestSelectMediaViewController, animated: true)
+    }
+    
+    fileprivate func showCreateContestViewController(_ media: Media) {
+        let createContestViewController = CreateContestViewController(viewModel: createContestViewModel)
+        createContestViewModel.delegate = self
+        createContestViewModel.selectedMedia = media
         self.navigationController.pushViewController(createContestViewController, animated: true)
     }
 }
 
-extension CreateContestCoordinator: CreateContestViewControllerDelegate {
-    func createContestViewControllerDidTapCancel(_ createContestViewController: CreateContestViewController) {
+extension CreateContestCoordinator: CreateContestViewModelDelegate {
+    func createContestViewDidClickCancel(_ createContestViewModel: CreateContestViewModel) {
         self.delegate?.createContestCoordinatorDelegateDidCancel(self)
     }
     
-    func createContestViewController(_ createContestViewController: CreateContestViewController, didCreateContest contest: Contest) {
+    func createContestView(_ createContestViewModel: CreateContestViewModel, didSelectMedia media: Media) {
+        showCreateContestViewController(media)
+    }
+    
+    func createContestView(_ createContestViewModel: CreateContestViewModel, didCreateContest contest: Contest) {
         self.delegate?.createContestCoordinator(self, didCreateContest: contest)
     }
 }

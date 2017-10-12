@@ -41,17 +41,16 @@ class ContestCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    func configureWith(_ contest: Contest, showCTA: Bool = false) {
-        for subview in stackView.arrangedSubviews {
-            stackView.removeArrangedSubview(subview)
-            subview.removeFromSuperview()
-        }
-        
+    func configureWith(_ media: Media) {
         imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: contentView.bounds.width, height: contentView.bounds.height))
         imageView.contentMode = .scaleAspectFill
-        imageView.image(fromUrl: contest.media.imageUrl)
+        imageView.image(fromUrl: media.imageUrl)
         
         stackView.addArrangedSubview(imageView)
+    }
+    
+    func configureWith(_ contest: Contest, showCTA: Bool = false) {
+        configureWith(contest.media)
         
         if showCTA {
             let label = UILabel()
@@ -79,5 +78,9 @@ class ContestCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         imageView.image = nil
+        for subview in stackView.arrangedSubviews {
+            stackView.removeArrangedSubview(subview)
+            subview.removeFromSuperview()
+        }
     }
 }

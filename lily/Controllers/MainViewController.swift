@@ -21,7 +21,6 @@ class MainViewController: BaseViewModelViewController<MainViewModel>, ListAdapte
     }()
     
     private var contestsCollectionView: UICollectionView!
-    private let contestCellReuseIdentifier = "contestCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -14,6 +14,9 @@
 		C1C3F1F61F8FDEB2000B0399 /* IGListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3F1F51F8FDEB2000B0399 /* IGListItem.swift */; };
 		C1C3F1F81F8FDFE3000B0399 /* IGListItemSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3F1F71F8FDFE3000B0399 /* IGListItemSectionController.swift */; };
 		C1C3F1FA1F8FE0C3000B0399 /* IGListItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3F1F91F8FE0C3000B0399 /* IGListItemCollectionViewCell.swift */; };
+		C1C3F1FC1F8FF06A000B0399 /* CreateContestSelectMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3F1FB1F8FF06A000B0399 /* CreateContestSelectMediaViewController.swift */; };
+		C1C3F1FE1F8FF592000B0399 /* CreateContestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3F1FD1F8FF592000B0399 /* CreateContestViewModel.swift */; };
+		C1C3F2001F900217000B0399 /* MediaSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3F1FF1F900217000B0399 /* MediaSectionController.swift */; };
 		C1CB07B61F848D3D006121BD /* contest_guru_60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CB07AE1F848D3D006121BD /* contest_guru_60@3x.png */; };
 		C1CB07B71F848D3D006121BD /* contest_guru_20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CB07AF1F848D3D006121BD /* contest_guru_20@2x.png */; };
 		C1CB07B81F848D3D006121BD /* contest_guru_20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1CB07B01F848D3D006121BD /* contest_guru_20@3x.png */; };
@@ -94,6 +97,9 @@
 		C1C3F1F51F8FDEB2000B0399 /* IGListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IGListItem.swift; path = Models/IGListItem.swift; sourceTree = "<group>"; };
 		C1C3F1F71F8FDFE3000B0399 /* IGListItemSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IGListItemSectionController.swift; path = "Section Controllers/IGListItemSectionController.swift"; sourceTree = "<group>"; };
 		C1C3F1F91F8FE0C3000B0399 /* IGListItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IGListItemCollectionViewCell.swift; path = Views/IGListItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		C1C3F1FB1F8FF06A000B0399 /* CreateContestSelectMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateContestSelectMediaViewController.swift; path = Controllers/CreateContestSelectMediaViewController.swift; sourceTree = "<group>"; };
+		C1C3F1FD1F8FF592000B0399 /* CreateContestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateContestViewModel.swift; path = ViewModels/CreateContestViewModel.swift; sourceTree = "<group>"; };
+		C1C3F1FF1F900217000B0399 /* MediaSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MediaSectionController.swift; path = "Section Controllers/MediaSectionController.swift"; sourceTree = "<group>"; };
 		C1CB07AE1F848D3D006121BD /* contest_guru_60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contest_guru_60@3x.png"; path = "Icons/contest_guru_60@3x.png"; sourceTree = "<group>"; };
 		C1CB07AF1F848D3D006121BD /* contest_guru_20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contest_guru_20@2x.png"; path = "Icons/contest_guru_20@2x.png"; sourceTree = "<group>"; };
 		C1CB07B01F848D3D006121BD /* contest_guru_20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contest_guru_20@3x.png"; path = "Icons/contest_guru_20@3x.png"; sourceTree = "<group>"; };
@@ -189,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				C1F0CEA31F78546500DFE5AD /* ContestSectionController.swift */,
+				C1C3F1FF1F900217000B0399 /* MediaSectionController.swift */,
 				C1C3F1F71F8FDFE3000B0399 /* IGListItemSectionController.swift */,
 			);
 			name = sectioncontrollers;
@@ -294,6 +301,7 @@
 				C1F451D11F6A49A70033DAEF /* BaseViewModelViewController.swift */,
 				C1F451C01F69AFF40033DAEF /* MainViewController.swift */,
 				C138D1941F82B92200F5E19E /* LoginWebViewController.swift */,
+				C1C3F1FB1F8FF06A000B0399 /* CreateContestSelectMediaViewController.swift */,
 				C1F451C41F69B0B10033DAEF /* CreateContestViewController.swift */,
 				C1F451C21F69B0A00033DAEF /* ContestViewController.swift */,
 				C1F451C61F69B0D80033DAEF /* ResultsViewController.swift */,
@@ -315,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				C1F451D41F6AE29F0033DAEF /* MainViewModel.swift */,
+				C1C3F1FD1F8FF592000B0399 /* CreateContestViewModel.swift */,
 			);
 			name = viewmodels;
 			sourceTree = "<group>";
@@ -578,6 +587,7 @@
 				C1F451C51F69B0B10033DAEF /* CreateContestViewController.swift in Sources */,
 				C1C3F1F81F8FDFE3000B0399 /* IGListItemSectionController.swift in Sources */,
 				C1F451C31F69B0A00033DAEF /* ContestViewController.swift in Sources */,
+				C1C3F1FE1F8FF592000B0399 /* CreateContestViewModel.swift in Sources */,
 				C1F451EF1F6CA50D0033DAEF /* Globals.swift in Sources */,
 				C1F451E01F6B1BAB0033DAEF /* Media.swift in Sources */,
 				C1F451E91F6B3AD90033DAEF /* ContestCollectionViewCell.swift in Sources */,
@@ -586,6 +596,7 @@
 				C1F451DE1F6AF7220033DAEF /* TestInstagramDataProvider.swift in Sources */,
 				C1F0CEA41F78546500DFE5AD /* ContestSectionController.swift in Sources */,
 				C1F451C91F69B0EA0033DAEF /* CreateContestCoordinator.swift in Sources */,
+				C1C3F2001F900217000B0399 /* MediaSectionController.swift in Sources */,
 				C1F451801F673DC00033DAEF /* AppDelegate.swift in Sources */,
 				C138D1971F83FFB000F5E19E /* UserManager.swift in Sources */,
 				C1F451C11F69AFF40033DAEF /* MainViewController.swift in Sources */,
@@ -595,6 +606,7 @@
 				C1F451F11F6CA5390033DAEF /* UIColor+instagram.swift in Sources */,
 				C1F451CD1F69D20B0033DAEF /* Coordinator.swift in Sources */,
 				C1F451D51F6AE29F0033DAEF /* MainViewModel.swift in Sources */,
+				C1C3F1FC1F8FF06A000B0399 /* CreateContestSelectMediaViewController.swift in Sources */,
 				C1F451D81F6AE4B40033DAEF /* DataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

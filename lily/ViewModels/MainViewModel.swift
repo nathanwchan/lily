@@ -67,10 +67,6 @@ class MainViewModel {
         self.delegate?.mainView(self, didSelectContest: contest)
     }
     
-    func getMedia() {
-        dataProvider.getMediaForUser(completion: self.didGetMediaForUser)
-    }
-    
     func getContestsForUser() {
         dataProvider.getContestsForUser(maxId: nil, completion: self.didGetContests)
     }

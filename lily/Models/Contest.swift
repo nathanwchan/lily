@@ -51,6 +51,6 @@ class Contest: ListDiffable {
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
         guard self !== object else { return true }
         guard let object = object as? Contest else { return false }
-        return name == object.name
+        return id == object.id
     }
 }
