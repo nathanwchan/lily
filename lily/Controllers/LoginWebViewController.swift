@@ -55,7 +55,7 @@ class LoginWebViewController: UIViewController, UIWebViewDelegate {
         self.delegate?.loginWebViewControllerDelegateDidCancel(self)
     }
     
-    func webViewDidFinishLoad(_ webView: UIWebView) {
+    private func checkForToken() {
         if let cookies = HTTPCookieStorage.shared.cookies {
             for cookie in cookies {
                 if cookie.name == "token" {
@@ -64,5 +64,18 @@ class LoginWebViewController: UIViewController, UIWebViewDelegate {
                 }
             }
         }
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        checkForToken()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        checkForToken()
+    }
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        checkForToken()
+        return true
     }
 }

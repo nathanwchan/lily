@@ -57,7 +57,7 @@ extension ViewContestCoordinator: ContestViewControllerDelegate {
     }
     
     func contestViewController(_ contestViewController: ContestViewController, didClickViewOnIG contest: Contest) {
-        self.openUrlInModal(URL(string: contest.media.link))
+        self.openMedia(contest.media)
     }
 }
 

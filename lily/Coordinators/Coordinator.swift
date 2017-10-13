@@ -35,18 +35,18 @@ protocol TabBarCoordinator: Coordinator {
 }
 
 extension NavigationCoordinator {
-    func openUrlInModal(_ url: URL?) {
-        if let url = url {
-            if UIApplication.shared.canOpenURL(url) {
-                let vc = SFSafariViewController(url: url, entersReaderIfAvailable: false)
-                vc.modalPresentationStyle = .overFullScreen
-                self.navigationController.present(vc, animated: true, completion: nil)
-            } else {
-                let alertController = UIAlertController(title: "Error", message: "URL is invalid. Maybe it's missing http:// ?", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                alertController.addAction(okAction)
-                self.navigationController.present(alertController, animated: true, completion: nil)
-            }
+    func openMedia(_ media: Media) {
+        if let url = URL(string: "instagram://media?id=\(media.id)"), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else if let url = URL(string: media.link), UIApplication.shared.canOpenURL(url) {
+            let vc = SFSafariViewController(url: url, entersReaderIfAvailable: false)
+            vc.modalPresentationStyle = .overFullScreen
+            self.navigationController.present(vc, animated: true, completion: nil)
+        } else {
+            let alertController = UIAlertController(title: "Error", message: "Sorry, something went wrong.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            self.navigationController.present(alertController, animated: true, completion: nil)
         }
     }
 }
