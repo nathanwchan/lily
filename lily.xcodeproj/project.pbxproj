@@ -10,7 +10,7 @@
 		4C61A14D32DB9C652314F833 /* Pods_lily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BD7BC4EE3F103958EF222 /* Pods_lily.framework */; };
 		C138D1951F82B92200F5E19E /* LoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C138D1941F82B92200F5E19E /* LoginWebViewController.swift */; };
 		C138D1971F83FFB000F5E19E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C138D1961F83FFB000F5E19E /* UserManager.swift */; };
-		C1C3F1F41F8FDABD000B0399 /* contest_guru_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C3F1F31F8FDABD000B0399 /* contest_guru_1024.png */; };
+		C1B504ED1F914751009D4D37 /* contest_guru_1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1B504EC1F914750009D4D37 /* contest_guru_1024.jpg */; };
 		C1C3F1F61F8FDEB2000B0399 /* IGListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3F1F51F8FDEB2000B0399 /* IGListItem.swift */; };
 		C1C3F1F81F8FDFE3000B0399 /* IGListItemSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3F1F71F8FDFE3000B0399 /* IGListItemSectionController.swift */; };
 		C1C3F1FA1F8FE0C3000B0399 /* IGListItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C3F1F91F8FE0C3000B0399 /* IGListItemCollectionViewCell.swift */; };
@@ -93,7 +93,7 @@
 		55F87B504469E9E8CB0AC8F2 /* Pods-lily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lily.release.xcconfig"; path = "Pods/Target Support Files/Pods-lily/Pods-lily.release.xcconfig"; sourceTree = "<group>"; };
 		C138D1941F82B92200F5E19E /* LoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginWebViewController.swift; path = Controllers/LoginWebViewController.swift; sourceTree = "<group>"; };
 		C138D1961F83FFB000F5E19E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Utils/UserManager.swift; sourceTree = "<group>"; };
-		C1C3F1F31F8FDABD000B0399 /* contest_guru_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = contest_guru_1024.png; path = Icons/contest_guru_1024.png; sourceTree = "<group>"; };
+		C1B504EC1F914750009D4D37 /* contest_guru_1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = contest_guru_1024.jpg; path = Icons/contest_guru_1024.jpg; sourceTree = "<group>"; };
 		C1C3F1F51F8FDEB2000B0399 /* IGListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IGListItem.swift; path = Models/IGListItem.swift; sourceTree = "<group>"; };
 		C1C3F1F71F8FDFE3000B0399 /* IGListItemSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IGListItemSectionController.swift; path = "Section Controllers/IGListItemSectionController.swift"; sourceTree = "<group>"; };
 		C1C3F1F91F8FE0C3000B0399 /* IGListItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IGListItemCollectionViewCell.swift; path = Views/IGListItemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 				C1CB07B21F848D3D006121BD /* contest_guru_40@2x.png */,
 				C1CB07B31F848D3D006121BD /* contest_guru_60@2x.png */,
 				C1CB07AE1F848D3D006121BD /* contest_guru_60@3x.png */,
-				C1C3F1F31F8FDABD000B0399 /* contest_guru_1024.png */,
+				C1B504EC1F914750009D4D37 /* contest_guru_1024.jpg */,
 			);
 			name = icons;
 			sourceTree = "<group>";
@@ -482,7 +482,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1C3F1F41F8FDABD000B0399 /* contest_guru_1024.png in Resources */,
 				C1F4518A1F673DC00033DAEF /* LaunchScreen.storyboard in Resources */,
 				C1F452081F6F8F570033DAEF /* public-icon@2x.png in Resources */,
 				C1F451871F673DC00033DAEF /* Assets.xcassets in Resources */,
@@ -495,6 +494,7 @@
 				C1CB07B61F848D3D006121BD /* contest_guru_60@3x.png in Resources */,
 				C1CB07B91F848D3D006121BD /* contest_guru_29@3x.png in Resources */,
 				C1F451FD1F6CD6AA0033DAEF /* public-icon.png in Resources */,
+				C1B504ED1F914751009D4D37 /* contest_guru_1024.jpg in Resources */,
 				C1F452071F6F8F570033DAEF /* profile-icon@3x.png in Resources */,
 				C1CB07B81F848D3D006121BD /* contest_guru_20@3x.png in Resources */,
 				C1CB07BC1F848D3D006121BD /* contest_guru_29@2x.png in Resources */,
