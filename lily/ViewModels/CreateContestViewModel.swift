@@ -47,8 +47,9 @@ class CreateContestViewModel {
         self.delegate?.createContestView(self, didSelectMedia: media)
     }
     
-    func didClickCreateNewContest() {
-//        self.delegate?.createContestView(self)
+    func didClickCreateNewContest(with media: Media) {
+        let newContest = Contest(name: "new contest", media: media)
+        self.delegate?.createContestView(self, didCreateContest: newContest)
     }
     
     func didClickCancel() {
