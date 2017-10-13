@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SafariServices
 
 class ViewContestCoordinator: NavigationCoordinator {
     var navigationController: UINavigationController
@@ -42,21 +41,6 @@ class ViewContestCoordinator: NavigationCoordinator {
         let resultsViewController = ResultsViewController()
         resultsViewController.contest = contest
         self.navigationController.pushViewController(resultsViewController, animated: true)
-    }
-    
-    fileprivate func openUrlInModal(_ url: URL?) {
-        if let url = url {
-            if UIApplication.shared.canOpenURL(url) {
-                let vc = SFSafariViewController(url: url, entersReaderIfAvailable: false)
-                vc.modalPresentationStyle = .overFullScreen
-                self.navigationController.present(vc, animated: true, completion: nil)
-            } else {
-                let alertController = UIAlertController(title: "Error", message: "URL is invalid. Maybe it's missing http:// ?", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                alertController.addAction(okAction)
-                self.navigationController.present(alertController, animated: true, completion: nil)
-            }
-        }
     }
 }
 

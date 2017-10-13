@@ -58,8 +58,6 @@ class CreateContestViewController: BaseViewModelViewController<CreateContestView
         
         scrollView.addSubview(imageView)
         
-        let spacing: CGFloat = 20
-        
         let detailStackView = UIStackView(frame: .zero)
         detailStackView.translatesAutoresizingMaskIntoConstraints = false
         detailStackView.axis = .vertical
@@ -67,14 +65,23 @@ class CreateContestViewController: BaseViewModelViewController<CreateContestView
         detailStackView.alignment = .fill
         detailStackView.isLayoutMarginsRelativeArrangement = true
         detailStackView.clipsToBounds = true
-        detailStackView.spacing = spacing
+        detailStackView.spacing = 15
         
         scrollView.addSubview(detailStackView)
         
-        detailStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: spacing).isActive = true
-        detailStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -spacing).isActive = true
-        detailStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: spacing).isActive = true
-        detailStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -spacing).isActive = true
+        detailStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        detailStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        detailStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
+        detailStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20).isActive = true
+        
+        let captionStackView = UIStackView(frame: .zero)
+        captionStackView.translatesAutoresizingMaskIntoConstraints = false
+        captionStackView.axis = .vertical
+        captionStackView.distribution = .fill
+        captionStackView.alignment = .fill
+        captionStackView.isLayoutMarginsRelativeArrangement = true
+        captionStackView.clipsToBounds = true
+        captionStackView.spacing = 0
         
         let captionLabel = UILabel(frame: .zero)
         let attrs = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 14)!]
@@ -88,9 +95,31 @@ class CreateContestViewController: BaseViewModelViewController<CreateContestView
         captionLabel.attributedText = attributedString
         captionLabel.textColor = .black
         captionLabel.textAlignment = .left
-        captionLabel.numberOfLines = 0
+        captionLabel.numberOfLines = 5
+        captionLabel.adjustsFontSizeToFitWidth = false
+        captionLabel.lineBreakMode = .byTruncatingTail
         
-        detailStackView.addArrangedSubview(captionLabel)
+        captionStackView.addArrangedSubview(captionLabel)
+        
+        let viewOnIGButton = UIButton(frame: .zero)
+        viewOnIGButton.setTitle("View on Instagram", for: .normal)
+        viewOnIGButton.setTitleColor(.instagramBlue, for: .normal)
+        viewOnIGButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 14)
+        viewOnIGButton.contentHorizontalAlignment = .left
+        viewOnIGButton.addTarget(self, action: #selector(viewOnIGButtonClicked), for: .touchUpInside)
+        
+        captionStackView.addArrangedSubview(viewOnIGButton)
+        
+        detailStackView.addArrangedSubview(captionStackView)
+        
+        let contestRulesStackView = UIStackView(frame: .zero)
+        contestRulesStackView.translatesAutoresizingMaskIntoConstraints = false
+        contestRulesStackView.axis = .vertical
+        contestRulesStackView.distribution = .fillEqually
+        contestRulesStackView.alignment = .fill
+        contestRulesStackView.isLayoutMarginsRelativeArrangement = true
+        contestRulesStackView.clipsToBounds = true
+        contestRulesStackView.spacing = 15
         
         let likePostStackView = UIStackView(frame: .zero)
         likePostStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -109,7 +138,7 @@ class CreateContestViewController: BaseViewModelViewController<CreateContestView
         likePostStackView.addArrangedSubview(likePostLabel)
         likePostStackView.addArrangedSubview(likePostSwitch)
         
-        detailStackView.addArrangedSubview(likePostStackView)
+        contestRulesStackView.addArrangedSubview(likePostStackView)
         
         let followHostStackView = UIStackView(frame: .zero)
         followHostStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -128,7 +157,7 @@ class CreateContestViewController: BaseViewModelViewController<CreateContestView
         followHostStackView.addArrangedSubview(followHostLabel)
         followHostStackView.addArrangedSubview(followHostSwitch)
         
-        detailStackView.addArrangedSubview(followHostStackView)
+        contestRulesStackView.addArrangedSubview(followHostStackView)
         
         let maxEntriesStackView = UIStackView(frame: .zero)
         maxEntriesStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -151,7 +180,7 @@ class CreateContestViewController: BaseViewModelViewController<CreateContestView
         maxEntriesStackView.addArrangedSubview(maxEntriesLabel)
         maxEntriesStackView.addArrangedSubview(maxEntriesTextField)
         
-        detailStackView.addArrangedSubview(maxEntriesStackView)
+        contestRulesStackView.addArrangedSubview(maxEntriesStackView)
         
         let endDateStackView = UIStackView(frame: .zero)
         endDateStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -180,7 +209,9 @@ class CreateContestViewController: BaseViewModelViewController<CreateContestView
         endDateStackView.addArrangedSubview(endDateLabel)
         endDateStackView.addArrangedSubview(endDateTextField)
         
-        detailStackView.addArrangedSubview(endDateStackView)
+        contestRulesStackView.addArrangedSubview(endDateStackView)
+        
+        detailStackView.addArrangedSubview(contestRulesStackView)
         
         let createContestButton = UIButton(frame: .zero)
         createContestButton.center = view.center
@@ -190,6 +221,10 @@ class CreateContestViewController: BaseViewModelViewController<CreateContestView
         createContestButton.addTarget(self, action: #selector(self.createContestButtonClicked(sender:)), for: .touchUpInside)
         
         detailStackView.addArrangedSubview(createContestButton)
+    }
+    
+    @objc func viewOnIGButtonClicked(sender: Any?) {
+        viewModel.didClickViewOnIG()
     }
 
     @objc func keyboardWasShown(notification: NSNotification)

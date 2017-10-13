@@ -55,4 +55,8 @@ extension CreateContestCoordinator: CreateContestViewModelDelegate {
     func createContestView(_ createContestViewModel: CreateContestViewModel, didCreateContest contest: Contest) {
         self.delegate?.createContestCoordinator(self, didCreateContest: contest)
     }
+    
+    func createContestView(_ createContestViewModel: CreateContestViewModel, didClickViewOnIG media: Media) {
+        self.openUrlInModal(URL(string: media.link))
+    }
 }

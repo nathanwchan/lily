@@ -12,6 +12,7 @@ protocol CreateContestViewModelDelegate: class {
     func createContestView(_ createContestViewModel: CreateContestViewModel, didSelectMedia media: Media)
     func createContestView(_ createContestViewModel: CreateContestViewModel, didCreateContest contest: Contest)
     func createContestViewDidClickCancel(_ createContestViewModel: CreateContestViewModel)
+    func createContestView(_ createContestViewModel: CreateContestViewModel, didClickViewOnIG media: Media)
 }
 
 class CreateContestViewModel {
@@ -45,6 +46,11 @@ class CreateContestViewModel {
     
     func didSelectMedia(_ media: Media) {
         self.delegate?.createContestView(self, didSelectMedia: media)
+    }
+    
+    func didClickViewOnIG() {
+        guard let media = selectedMedia else { return }
+        self.delegate?.createContestView(self, didClickViewOnIG: media)
     }
     
     func didClickCreateNewContest(with media: Media) {
